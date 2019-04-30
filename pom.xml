@@ -7,6 +7,14 @@
   <version>1.0-SNAPSHOT</version>
   <name>composi_test Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,8 +22,56 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+
+	<dependency>
+		<groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        </dependency>
   </dependencies>
+  
   <build>
     <finalName>composi_test</finalName>
+    <plugins>
+	    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <verbose>false</verbose>
+          <fork>true</fork>
+          <source>11</source>
+          <target>11</target>
+          <compilerVersion>11</compilerVersion>
+          
+        </configuration>
+      </plugin>
+
+		<plugin>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>2.3</version>
+			<configuration>
+				<warSourceDirectory>webapp</warSourceDirectory>
+			</configuration>
+		</plugin>	
+
+		<plugin>
+			<groupId>org.apache.tomcat.maven</groupId>
+			<artifactId>tomcat7-maven-plugin</artifactId>
+			<version>2.2</version>
+			<configuration>
+				<path>/composi_test</path>
+        <!-- manager/text 고정 -->
+				<url>http://localhost:8383/manager/text</url>
+				<server>tomcatServer</server>
+			</configuration>
+		</plugin>
+
+	</plugins>
   </build>
 </project>
