@@ -13,7 +13,7 @@
 > 실행
 <ul>
     <li>이클립스에서는 Maven Build의 Goal에 tomcat7:deploy를 입력 후 build</li>
-    <li>cmd에서는 mvn clean tomcat7:deploy 수행</li>
+    <li>cmd에서는 mvn clean tomcat7:redeploy 수행</li>
 </ul>
 
 > 폴더
