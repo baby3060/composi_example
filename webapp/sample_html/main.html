@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <div id="wrap">
+        <header>        
+            <div>Logo</div>
+            <div id="topmenu">
+                <div>홈</div>
+                <div>로그인(로그아웃)</div>
+                <div>회원가입</div>
+                <div>정보</div>
+                <div>
+                    <input type="text" placeholder="통합검색"/><button id="search_top" >검색</button>
+                    HOT 검색어
+                </div>
+            </div>
+        </header>
+
+        <div id="mainbody">
+            <div id="left">
+                <nav>
+                    
+                </nav>
+            </div>
+
+            <div id="content">
+    
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // jQuery의 one을 자바스크립트로 구현
+        function submit(event) {
+            var e = event || window.event;
+            if(e.currentTarget.dataset.triggered) return;
+            e.currentTarget.dataset.triggered = true;
+            alert('clicked');
+        }
+
+        // Event Listener - IIFE 사용하여 등록
+        (function() {
+            
+            let search_top_submit = document.getElementById("search_top");
+
+            if(search_top_submit.addEventListener) {
+                search_top_submit.addEventListener('click', submit);
+            } else {
+                search_top_submit.attachEvent('click', submit);
+            }
+        }());
+        
+
+    </script>
+</body>
+</html>
