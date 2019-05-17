@@ -5,46 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="../style/css/main.css">
 </head>
 <body>
     
-    <div id="wrap">
-        <header>        
-            <div>Logo</div>
-            <div id="topmenu">
-                <div>홈</div>
-                <div>로그인(로그아웃)</div>
-                <div>회원가입</div>
-                <div>정보</div>
-                <div>
-                    <input type="text" placeholder="통합검색"/><button id="search_top" >검색</button>
-                    HOT 검색어
+    <form action="" id="mainform">
+        <div id="wrap">
+            <header>
+                <div style="float : left; width : 250px;">Logo</div>
+                <div id="topmenu">
+                    <ul>
+                        <li class="home"></li>
+                        <li class="login"></li>
+                        <li class="join"></li>
+                        <li class="info"></li>
+                    </ul>
+                    <div>
+                        <input type="text" id="search_text" placeholder="통합검색"/><button id="search_top" >검색</button>
+                        HOT 검색어
+                    </div>
+                </div>
+            </header>
+    
+            <div id="mainbody">
+                <div id="left">
+                    <nav>
+    
+                    </nav>
+                </div>
+    
+                <div id="content">
+                    
                 </div>
             </div>
-        </header>
-
-        <div id="mainbody">
-            <div id="left">
-                <nav>
-                    
-                </nav>
-            </div>
-
-            <div id="content">
-    
-            </div>
         </div>
-
-    </div>
-
+    </form>
+    
     <script>
         // jQuery의 one을 자바스크립트로 구현
         function submit(event) {
             var e = event || window.event;
-            if(e.currentTarget.dataset.triggered) return;
-            e.currentTarget.dataset.triggered = true;
-            alert('clicked');
+            let searchForm = document.getElementById("mainform");
+            let search_text = document.getElementById("search_text").value;
+
+            if( search_text === '' ) {
+                alert("검색어를 입력하세요");
+            } else {
+                if(e.currentTarget.dataset.triggered) return;
+                e.currentTarget.dataset.triggered = true;
+                searchForm.submit();
+            }
         }
 
         // Event Listener - IIFE 사용하여 등록
@@ -55,7 +65,7 @@
             if(search_top_submit.addEventListener) {
                 search_top_submit.addEventListener('click', submit);
             } else {
-                search_top_submit.attachEvent('click', submit);
+                search_top_submit.attachEvent('onclick', submit);
             }
         }());
         

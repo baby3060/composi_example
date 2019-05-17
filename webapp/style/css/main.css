@@ -2,5 +2,55 @@
 @import url("font.css");
 
 body {
-    
+    margin : 0; padding : 0;
+}
+
+@media(min-width : 750px) {
+    header {
+        
+        height: 70px;
+    }
+
+    #topmenu li {
+        margin : 0 10px;
+        float : left;
+        height : 70px;
+    }
+
+    .home {
+        width: 53px; height: 50px;
+        background: url('../images/top.png') -180px -80px no-repeat;
+    }
+
+    .login {
+        width: 113px; height: 50px;
+        background: url('../images/top.png') -10px -80px no-repeat;
+    }
+
+    .info {
+        width: 78px; height: 50px;
+        background: url('../images/top.png') -180px -10px no-repeat;
+    }
+
+    .join {
+        width: 150px; height: 50px;
+        background: url('../images/top.png') -10px -10px no-repeat;
+    }
+
+    #topmenu div {
+        float : both;
+    }
+}
+
+
+@media(max-width : 750px) {
+    header {
+        display: none;
+    }
+}
+
+
+
+#wrap {
+    width: 100%;
 }
