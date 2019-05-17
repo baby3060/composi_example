@@ -15,10 +15,10 @@
                 <div style="float : left; width : 250px;">Logo</div>
                 <div id="topmenu">
                     <ul>
-                        <li class="home"></li>
-                        <li class="login"></li>
-                        <li class="join"></li>
-                        <li class="info"></li>
+                        <a href="#" onclick=""><li class="home"></li></a>
+                        <a href="#" onclick=""><li class="login"></li></a>
+                        <a href="#" onclick=""><li class="join"></li></a>
+                        <a href="#" onclick=""><li class="info"></li></a>
                     </ul>
                     <div>
                         <input type="text" id="search_text" placeholder="통합검색"/><button id="search_top" >검색</button>
@@ -30,7 +30,37 @@
             <div id="mainbody">
                 <div id="left">
                     <nav>
-    
+                        <ul>
+                            <li class="accordion">
+                                <p>정보공개</p>
+                                <ul class="item hidden">
+                                    <li>공지사항</li>
+                                </ul>
+                            </li>
+                            <li class="accordion">
+                                <p>기차표예매</p>
+                                <ul class="item hidden">
+                                    <li>철도예매</li>
+                                    <li>관광열차예매</li>
+                                </ul>
+                            </li>
+                            <li class="accordion">
+                                <p>고객지원</p>
+                                <ul class="item hidden">
+                                    <li>불만사항</li>
+                                    <li>자유게시판</li>
+                                    <li>요청사항</li>
+                                    <li>칭찬합시다</li>
+                                </ul>
+                            </li>
+                            <li class="accordion">
+                                <p>소개</p>
+                                <ul class="item hidden">
+                                    <li>사업분야</li>
+                                    <li>찾아오시는 길</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
     
@@ -61,14 +91,59 @@
         (function() {
             
             let search_top_submit = document.getElementById("search_top");
-
             if(search_top_submit.addEventListener) {
-                search_top_submit.addEventListener('click', submit);
+                search_top_submit.addEventListener('click', submit, false);
             } else {
                 search_top_submit.attachEvent('onclick', submit);
             }
         }());
         
+        function hasClass(element, cls) {
+            return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+        }
+
+        (function() {
+            
+            let accordion = document.getElementsByTagName("li");
+            
+            for( var i = 0; i < accordion.length; i++ ) {
+                // 클로저
+                (
+                    function(j) {
+                        var accordion_obj = accordion[j];
+                        if( accordion_obj.className == "accordion" ) {
+                            if(accordion_obj.addEventListener) {
+                                accordion_obj.addEventListener('click'
+                                , function() {
+                                    var c = accordion_obj.getElementsByClassName("item");
+                                    var annoth = document.getElementsByClassName("show");
+
+                                    if(annoth.length > 0) {
+                                        for(let k = 0; k < annoth.length; k++ ) {
+                                            annoth[k].className = "item hidden";
+                                        }
+                                    }
+
+                                    for( let k = 0; k < c.length; k++ ) {
+                                        if( c[k].className.indexOf("hidden") > 0 ) {
+                                            c[k].className = "item show";
+                                        } else {
+                                            c[k].className = "item hidden";
+                                        }
+                                    }
+                                }
+                                , false); 
+                            } else {
+                                accordion[i].attachEvent('onclick', function() {
+                                    alert("attachClick");
+                                });
+                            }
+                        }
+                    }
+                )(i);
+            }
+
+        }());
 
     </script>
 </body>

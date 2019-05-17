@@ -7,38 +7,49 @@ body {
 
 @media(min-width : 750px) {
     header {
-        
-        height: 70px;
+        height: 50px;
     }
 
     #topmenu li {
         margin : 0 10px;
         float : left;
-        height : 70px;
+    }
+
+    .item {
+        font-size : 7pt;
     }
 
     .home {
-        width: 53px; height: 50px;
-        background: url('../images/top.png') -180px -80px no-repeat;
+        width: 25px; height: 25px;
+        background: url('../images/top.png') no-repeat -102px -55px ;
     }
 
     .login {
-        width: 113px; height: 50px;
-        background: url('../images/top.png') -10px -80px no-repeat;
+        width: 54px; height: 25px;
+        background: url('../images/top.png') no-repeat -10px -55px;
     }
 
     .info {
-        width: 78px; height: 50px;
-        background: url('../images/top.png') -180px -10px no-repeat;
+        width: 42px; height: 25px;
+        background: url('../images/top.png') no-repeat;
+        background-position: -102px -10px;
     }
 
     .join {
-        width: 150px; height: 50px;
-        background: url('../images/top.png') -10px -10px no-repeat;
+        width: 72px; height: 25px;
+        background: url('../images/top.png') no-repeat -10px -10px;
     }
 
     #topmenu div {
         float : both;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .active {
+        display : block;
     }
 }
 
