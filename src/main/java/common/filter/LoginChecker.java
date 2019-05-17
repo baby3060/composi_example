@@ -7,14 +7,14 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 
-public class EncodingFilter implements Filter {
+public class LoginChecker implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
-        System.out.println("Encoding Init");
+        
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        request.setCharacterEncoding("UTF-8");
 
         chain.doFilter(request, response);
     }

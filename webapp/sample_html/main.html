@@ -118,19 +118,20 @@
                                     var c = accordion_obj.getElementsByClassName("item");
                                     var annoth = document.getElementsByClassName("show");
 
+                                    // 활성화 되어 있는 Nav 모두 해제
                                     if(annoth.length > 0) {
                                         for(let k = 0; k < annoth.length; k++ ) {
                                             annoth[k].className = "item hidden";
                                         }
                                     }
 
-                                    for( let k = 0; k < c.length; k++ ) {
-                                        if( c[k].className.indexOf("hidden") > 0 ) {
-                                            c[k].className = "item show";
-                                        } else {
-                                            c[k].className = "item hidden";
-                                        }
+                                    // 활성화 되어 있는 Nav 모두 해제(어차피 하나임)
+                                    if( c[0].className.indexOf("hidden") > 0 ) {
+                                        c[0].className = "item show";
+                                    } else {
+                                        c[0].className = "item hidden";
                                     }
+                                    
                                 }
                                 , false); 
                             } else {
