@@ -104,46 +104,81 @@
 
         (function() {
             
-            let accordion = document.getElementsByTagName("li");
-            
+            let accordion = document.getElementsByClassName("accordion");
+
             for( var i = 0; i < accordion.length; i++ ) {
                 // 클로저
                 (
                     function(j) {
                         var accordion_obj = accordion[j];
-                        if( accordion_obj.className == "accordion" ) {
-                            if(accordion_obj.addEventListener) {
-                                accordion_obj.addEventListener('click'
-                                , function() {
-                                    var c = accordion_obj.getElementsByClassName("item");
-                                    var annoth = document.getElementsByClassName("show");
 
-                                    // 활성화 되어 있는 Nav 모두 해제
-                                    if(annoth.length > 0) {
-                                        for(let k = 0; k < annoth.length; k++ ) {
-                                            annoth[k].className = "item hidden";
-                                        }
-                                    }
+                        if(accordion_obj.addEventListener) {
+                            accordion_obj.addEventListener('click'
+                            , function() {
+                                this.classList.toggle("active");
 
-                                    // 활성화 되어 있는 Nav 모두 해제(어차피 하나임)
-                                    if( c[0].className.indexOf("hidden") > 0 ) {
-                                        c[0].className = "item show";
-                                    } else {
-                                        c[0].className = "item hidden";
+                                if( this.classList.contains("active") ) {
+                                    var toggleList = document.getElementsByClassName("active");
+                                    if(toggleList.length > 0) {
+                                        for( var inner = 0; inner < toggleList.length; inner++ ) {
+                                            if(toggleList[inner] != this) {
+                                                toggleList[inner].classList.remove("active")
+                                            }
+                                        }   
                                     }
                                     
-                                }
-                                , false); 
-                            } else {
-                                accordion[i].attachEvent('onclick', function() {
-                                    alert("attachClick");
-                                });
+                                } 
                             }
+                            , false);
+                        } else {
+
                         }
                     }
                 )(i);
             }
 
+            /*
+            for( var i = 0; i < accordion.length; i++ ) {
+                // 클로저
+                (
+                    function(j) {
+                        var accordion_obj = accordion[j];
+                        
+                        if(accordion_obj.addEventListener) {
+                            accordion_obj.addEventListener('click'
+                            , function() {
+                                var c = accordion_obj.getElementsByClassName("item");
+                                var annoth = document.getElementsByClassName("active");
+                                
+                                if( annoth.length > 0 ) {
+                                    for( var annoI = 0; annoI < annoth.length; annoI++ ) {
+                                        annoth[annoI].classList.remove("active");
+                                    }
+                                }
+                                
+                                var child = document.getElementsByTagName("p");
+
+                                // 활성화 되어 있는 Nav 모두 해제(어차피 하나임)
+                                if( c[0].className.indexOf("hidden") > 0 ) {
+                                    this.classList.toggle("active");
+                                    // 활성화 되어 있는 Nav 모두 해제
+                                    c[0].className = "item show";
+                                } else {
+                                    this.classList.remove("active");
+                                    c[0].className = "item hidden";
+                                }
+                            }
+                            , false); 
+                        } else {
+                            accordion[i].attachEvent('onclick', function() {
+                                alert("attachClick");
+                            });
+                        }
+                    
+                    }
+                )(i);
+            }
+            */
         }());
 
     </script>

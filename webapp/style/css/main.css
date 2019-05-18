@@ -15,8 +15,42 @@ body {
         float : left;
     }
 
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15pt;
+        transition: 0.4s;
+    }
+
+    .accordion > p:after {
+        content: '\002B';
+        float: right;
+    }
+
+    .accordion > .item {
+        display: none;
+    }
+
+    .active > .item {
+        display : block;
+        background-color: #ccc;
+    }
+
+    .active > p:after {
+        content: "\2212";
+    }
+    
     .item {
-        font-size : 7pt;
+        font-size : 10pt;
+        padding: 0 18px;
+        background-color: white;    
+        transition: max-height 0.2s ease-out;
     }
 
     .home {
@@ -44,12 +78,8 @@ body {
         float : both;
     }
 
-    .hidden {
-        display: none;
-    }
-
-    .active {
-        display : block;
+    .accordion:hover {
+        background-color: #ccc;
     }
 }
 
