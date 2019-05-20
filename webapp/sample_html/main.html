@@ -8,70 +8,110 @@
     <link rel="stylesheet" href="../style/css/main.css">
 </head>
 <body>
-    
-    <form action="" id="mainform">
-        <div id="wrap">
-            <header>
-                <div style="float : left; width : 250px;">Logo</div>
-                <div id="topmenu">
-                    <ul>
-                        <a href="#" onclick=""><li class="home"></li></a>
-                        <a href="#" onclick=""><li class="login"></li></a>
-                        <a href="#" onclick=""><li class="join"></li></a>
-                        <a href="#" onclick=""><li class="info"></li></a>
-                    </ul>
-                    <div>
-                        <input type="text" id="search_text" placeholder="통합검색"/><button id="search_top" >검색</button>
-                        HOT 검색어
+    <div class="container">
+        <form action="" id="mainform">
+            <div id="wrap">
+                <header>
+                    <div style="float : left; width : 250px;">Logo</div>
+                    <div id="topmenu">
+                        <div>
+                            <ul id="toplist">
+                                <a href="#" name="home"><li class="home"></li></a>
+                                <a href="#" name="login"><li class="login"></li></a>
+                                <a href="#" name="join"><li class="join"></li></a>
+                                <a href="#" name="info"><li class="info"></li></a>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <input type="text" id="search_text" placeholder="통합검색"/><button id="search_top" >검색</button>
+                            HOT 검색어
+                        </div>
+                    </div>
+                </header>
+        
+                <div id="mainbody">
+                    <div id="left" style="width : 200px;">
+                        <nav>
+                            <ul>
+                                <li class="accordion">
+                                    <p>정보공개</p>
+                                    <ul class="item hidden">
+                                        <a href="#"><li id="notice">공지사항</li></a>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <p>기차표예매</p>
+                                    <ul class="item hidden">
+                                        <a href="#"><li id="book">철도예매</li></a>
+                                        <a href="#"><li id="travel">기차여행</li></a>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <p>고객지원</p>
+                                    <ul class="item hidden">
+                                        <a href="#"><li id="compli">불만사항</li></a>
+                                        <a href="#"><li id="board">자유게시판</li></a>
+                                        <a href="#"><li id="board">요청사항</li></a>
+                                        <a href="#"><li id="recommend">칭찬합시다</li></a>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <p>소개</p>
+                                    <ul class="item hidden">
+                                        <a href="#"><li id="info1">사업분야</li></a>
+                                        <a href="#"><li id="map">찾아오시는 길</li></a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                    
+                    <!-- 본문 -->
+                    <div id="content">
+                        
                     </div>
                 </div>
-            </header>
-    
-            <div id="mainbody">
-                <div id="left">
-                    <nav>
-                        <ul>
-                            <li class="accordion">
-                                <p>정보공개</p>
-                                <ul class="item hidden">
-                                    <li>공지사항</li>
-                                </ul>
-                            </li>
-                            <li class="accordion">
-                                <p>기차표예매</p>
-                                <ul class="item hidden">
-                                    <li>철도예매</li>
-                                    <li>관광열차예매</li>
-                                </ul>
-                            </li>
-                            <li class="accordion">
-                                <p>고객지원</p>
-                                <ul class="item hidden">
-                                    <li>불만사항</li>
-                                    <li>자유게시판</li>
-                                    <li>요청사항</li>
-                                    <li>칭찬합시다</li>
-                                </ul>
-                            </li>
-                            <li class="accordion">
-                                <p>소개</p>
-                                <ul class="item hidden">
-                                    <li>사업분야</li>
-                                    <li>찾아오시는 길</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-    
-                <div id="content">
-                    
-                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
     
     <script>
+        (function() {
+            let toplist = document.getElementById("toplist");
+            let menu = toplist.children;
+            let menuLength = menu.length;
+
+            let menuList = menu;
+            
+            for( let i = 0; i < menuLength; i++ ) {
+                (
+                    function(j) {
+                        let obj = menuList[j];
+
+                        if( obj.addEventListener ) {
+                            obj.addEventListener(
+                                'click',
+                                function() {
+                                    alert(obj.name);
+                                },
+                                false
+                            );
+                        } else {
+                            obj.attachEvent(
+                                'onclick',
+                                function() {
+                                    alert(obj.name);
+                                },
+                                false
+                            );
+                        }
+                    }
+                )(i);
+            }
+        })();
+
         // jQuery의 one을 자바스크립트로 구현
         function submit(event) {
             var e = event || window.event;
@@ -98,9 +138,6 @@
             }
         }());
         
-        function hasClass(element, cls) {
-            return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
-        }
 
         (function() {
             
@@ -108,8 +145,7 @@
 
             for( var i = 0; i < accordion.length; i++ ) {
                 // 클로저
-                (
-                    function(j) {
+                (function(j) {
                         var accordion_obj = accordion[j];
 
                         if(accordion_obj.addEventListener) {
@@ -126,61 +162,74 @@
                                             }
                                         }   
                                     }
-                                    
                                 } 
                             }
                             , false);
                         } else {
-
-                        }
-                    }
-                )(i);
-            }
-
-            /*
-            for( var i = 0; i < accordion.length; i++ ) {
-                // 클로저
-                (
-                    function(j) {
-                        var accordion_obj = accordion[j];
-                        
-                        if(accordion_obj.addEventListener) {
-                            accordion_obj.addEventListener('click'
+                            accordion_obj.attachEvent('onclick'
                             , function() {
-                                var c = accordion_obj.getElementsByClassName("item");
-                                var annoth = document.getElementsByClassName("active");
-                                
-                                if( annoth.length > 0 ) {
-                                    for( var annoI = 0; annoI < annoth.length; annoI++ ) {
-                                        annoth[annoI].classList.remove("active");
-                                    }
-                                }
-                                
-                                var child = document.getElementsByTagName("p");
+                                this.classList.toggle("active");
 
-                                // 활성화 되어 있는 Nav 모두 해제(어차피 하나임)
-                                if( c[0].className.indexOf("hidden") > 0 ) {
-                                    this.classList.toggle("active");
-                                    // 활성화 되어 있는 Nav 모두 해제
-                                    c[0].className = "item show";
-                                } else {
-                                    this.classList.remove("active");
-                                    c[0].className = "item hidden";
-                                }
-                            }
-                            , false); 
-                        } else {
-                            accordion[i].attachEvent('onclick', function() {
-                                alert("attachClick");
+                                if( this.classList.contains("active") ) {
+                                    var toggleList = document.getElementsByClassName("active");
+                                    if(toggleList.length > 0) {
+                                        for( var inner = 0; inner < toggleList.length; inner++ ) {
+                                            if(toggleList[inner] != this) {
+                                                toggleList[inner].classList.remove("active")
+                                            }
+                                        }   
+                                    }
+                                } 
                             });
                         }
-                    
                     }
                 )(i);
             }
-            */
         }());
 
+        (function() {
+            let leftMenu = document.getElementsByClassName("item");
+            
+            let menuArr = new Array();
+
+            let menuLength = leftMenu.length;
+
+            for( let i = 0; i < menuLength; i++ ) {
+                let innerLength = leftMenu[i].children.length;
+                let inner = leftMenu[i].children;
+                for( let j = 0; j < innerLength; j++ ) {
+                    menuArr.push(inner[j]);
+                }
+            }
+
+            menuLength = menuArr.length;
+
+            for( let i = 0; i < menuLength; i++ ) {
+                let obj = menuArr[i];
+                // 
+                if( obj.localName === 'a' ) {
+                    if( obj.addEventListener ) {
+                        obj.addEventListener(
+                            'click',
+                            function(event) {
+                                var event = event || window.event;
+                                console.log(event.target.id);
+                                // 이동시키기
+                                if(event.stopPropagation) event.stopPropagation();
+                                event.cancelBubble = true;
+                            },
+                            false
+                        );
+                        
+                    } else {
+
+                    }
+                } else {
+                    continue;
+                }
+            }
+        })();
+        
     </script>
 </body>
 </html>

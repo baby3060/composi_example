@@ -16,8 +16,8 @@ body {
     }
 
     .accordion {
-        background-color: #eee;
-        color: #444;
+        background-color: #2008A6;
+        color: #eee;
         cursor: pointer;
         padding: 18px;
         width: 100%;
@@ -34,12 +34,24 @@ body {
     }
 
     .accordion > .item {
+        font-size : 13pt;
+        padding : 15px;
         display: none;
+        margin-top : 25px;
+        line-height : 45px;
+    }
+
+    .item > a {
+        color: #eee;
     }
 
     .active > .item {
         display : block;
-        background-color: #ccc;
+        background-color: #B300FF;
+    }
+
+    .active {
+        background-color : #690CE8;
     }
 
     .active > p:after {
@@ -79,7 +91,7 @@ body {
     }
 
     .accordion:hover {
-        background-color: #ccc;
+        background-color: #690CE8;
     }
 }
 
@@ -89,8 +101,6 @@ body {
         display: none;
     }
 }
-
-
 
 #wrap {
     width: 100%;
