@@ -15,6 +15,10 @@ body {
         float : left;
     }
 
+    .select {
+        color : black;
+    }
+
     .accordion {
         background-color: #2008A6;
         color: #eee;
