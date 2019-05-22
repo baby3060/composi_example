@@ -10,9 +10,22 @@ body {
         height: 50px;
     }
 
+    #topmenu {
+        display:table-row;
+        float : clean;
+        width : 100%;
+        margin-left : 300px;
+    }
+
     #topmenu li {
         margin : 0 10px;
         float : left;
+    }
+
+    #topmenu li > a {
+        display:table-cell;
+        vertical-align: middle;
+        height : 50px;
     }
 
     .select {
@@ -71,23 +84,28 @@ body {
 
     .home {
         width: 25px; height: 25px;
-        background: url('../images/top.png') no-repeat -102px -55px ;
+        background: url('../images/top.png') no-repeat -10px -100px ;
     }
 
     .login {
         width: 54px; height: 25px;
-        background: url('../images/top.png') no-repeat -10px -55px;
+        background: url('../images/top.png') no-repeat -102px -10px;
     }
 
     .info {
         width: 42px; height: 25px;
         background: url('../images/top.png') no-repeat;
-        background-position: -102px -10px;
+        background-position: -102px -55px;
     }
 
     .join {
         width: 72px; height: 25px;
         background: url('../images/top.png') no-repeat -10px -10px;
+    }
+
+    .logout {
+        width: 72px; height: 25px;
+        background: url('../images/top.png') no-repeat -10px -55px;
     }
 
     #topmenu div {
@@ -104,6 +122,14 @@ body {
     header {
         display: none;
     }
+}
+
+#topmenu li > a {
+    color : lightskyblue;
+}
+
+#topmenu li > a:hover {
+    color : darkblue;
 }
 
 #wrap {

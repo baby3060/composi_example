@@ -38,12 +38,10 @@ function spanPrint(counter) {
     counter['rank'] = getRank();
 
     setTimeout(function(counter) {
-        console.log(counter.rank[counter.idx]);
         spanPrint(counter);
         counter.idx = counter.idx + 1;
 
         setInterval(function(counter) {
-            console.log(counter.rank[counter.idx]);
             spanPrint(counter);
 
             if( counter.idx > 9 ) {
@@ -159,7 +157,6 @@ function moveEvent(e) {
     var selectObj = document.getElementsByClassName("select");
     
     var event = e || window.event;
-    console.log(event.target.id);
     if( selectObj.length > 0 ) {
         var obj = selectObj[0];
         if( e.target == obj ) {
@@ -213,3 +210,36 @@ function moveEvent(e) {
         }
     }
 })();
+
+var slideIdx = 1;
+
+function plusDivs(n) {
+    showDivs(slideIdx += n);
+}
+
+(function() {
+    setInterval(plusDivs, 1000, 1);
+})();
+
+function showDivs(idx) {
+    let slideImage = document.getElementsByClassName("mySlides");
+
+    let slideLength = slideImage.length;
+
+    if( idx > slideLength ) {
+        slideIdx = 1;
+    }
+
+    if( idx < 1 ) {
+        slideIdx = slideLength;
+    }
+
+    for( let imgIdx = 0; imgIdx < slideLength; imgIdx++ ) {
+        if(imgIdx == (slideIdx - 1)) {
+            slideImage[imgIdx].style.display = "block";
+        } else {
+            slideImage[imgIdx].style.display = "none";
+        }
+    }
+
+}
