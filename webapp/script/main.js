@@ -30,7 +30,9 @@ var counter = {
 
 function spanPrint(counter) {
     var rankingObj = document.getElementById('ranking');
-    var htmlString = "<a>[" + (counter.idx + 1) + "]." + counter.rank[counter.idx] + "</a>";
+    var htmlString = "<a href='#'>";
+    htmlString = htmlString + "" + (counter.idx + 1) + "." + counter.rank[counter.idx] + "";
+    htmlString = htmlString + "</a>";
     rankingObj.innerHTML = htmlString;
 }
 
@@ -53,6 +55,7 @@ function spanPrint(counter) {
 })();
 
 
+// 최상단 홈, 로그인, 회원정보 등
 (function() {
     var toplist = document.getElementById("toplist");
     var menu = toplist.children;
@@ -85,7 +88,9 @@ function spanPrint(counter) {
         )(i);
     }
 })();
+
 // jQuery의 one을 자바스크립트로 구현
+// 검색 버튼
 function submit(event) {
     var e = event || window.event;
     var searchForm = document.getElementById("mainform");
@@ -109,6 +114,7 @@ function submit(event) {
     }
 }());
 
+// Left Menu 아코디언 효과
 (function() {
             
     var accordion = document.getElementsByClassName("accordion");
@@ -153,6 +159,7 @@ function submit(event) {
     }
 }());
 
+// Left Menu 클릭
 function moveEvent(e) {
     var selectObj = document.getElementsByClassName("select");
     
@@ -170,10 +177,13 @@ function moveEvent(e) {
     }
     
     // 이동시키기
+
+
     if(event.stopPropagation) event.stopPropagation();
     event.cancelBubble = true;
 }
 
+// Left Menu 이벤트 등록
 (function() {
     var leftMenu = document.getElementsByClassName("item");
     
@@ -211,12 +221,23 @@ function moveEvent(e) {
     }
 })();
 
+// Main의 이미지 slider banner
 var slideIdx = 0;
 
 function showDivs(idx) {
+
     var slideImage = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+
+    var dotsLength = dots.length;
+
+    for (var i = 0; i < dotsLength; i++) {
+        dots[i].classList.remove("dotactive");
+    }
 
     var slideLength = slideImage.length;
+
+    slideIdx = idx;
 
     if( idx > slideLength ) {
         slideIdx = 1;
@@ -233,6 +254,8 @@ function showDivs(idx) {
             slideImage[imgIdx].style.display = "none";
         }
     }
+
+    dots[slideIdx-1].classList.add("dotactive");
 }
 
 function plusDivs(n) {
@@ -242,6 +265,58 @@ function plusDivs(n) {
 (function() {
     setTimeout(function() {
         plusDivs(1);
-        setInterval(plusDivs, 1000, 1);
+        setInterval(plusDivs, 10000, 1);
     }, 0, 1);
+})();
+
+
+(function() {
+    var slideDot = document.getElementsByClassName("dot");
+
+    var dotLength = slideDot.length;
+
+    if(dotLength > 0) {
+        for(var i = 0; i < dotLength; i++) {
+            (
+                function(j) {
+                    var obj = slideDot[j];
+
+                    if( obj.addEventListener ) {
+                        obj.addEventListener('click', function() {
+                            showDivs((j + 1));
+                        }, false);
+                    } else {
+                        obj.attachEvent('onclick', function() {
+                            showDivs((j + 1));
+                        }, false);
+                    }
+                }
+            )(i)
+        }
+    }
+})();
+
+(function() {
+    var prevBtn = document.getElementById("prevBanner");
+    var nextBtn = document.getElementById("nextBanner");
+
+    if( prevBtn.addEventListener ) {
+        prevBtn.addEventListener('click', function() {
+            plusDivs(-1);
+        }, false);
+    } else {
+        prevBtn.attachEvent('onclick', function() {
+            plusDivs(-1);
+        }, false);
+    }
+
+    if( nextBtn.addEventListener ) {
+        nextBtn.addEventListener('click', function() {
+            plusDivs(1);
+        }, false);
+    } else {
+        nextBtn.attachEvent('onclick', function() {
+            plusDivs(1);
+        }, false);
+    }
 })();

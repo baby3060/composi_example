@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="" id="mainform">
+        <form action="" id="mainform" onsubmit="return false">
             <div id="wrap">
                 <header style="width : 100%;">
                     <div style="float : left; width : 205px;">Logo</div>
@@ -25,7 +25,7 @@
                         
                         <div id="top_search_div" style="margin-top : 10px; width : 1000px; ">
                             <input type="text" id="search_text" placeholder="통합검색" size="15"/><button id="search_top" >검색</button>
-                            <span >HOT 검색어</span> : <span id="ranking"></span>
+                            <span style="margin-left : 25px;">HOT 검색어</span> : <span id="ranking"></span>
                         </div>
                     </div>
                 </header>
@@ -71,14 +71,21 @@
                     <!-- 본문 -->
                     <div id="content" style="float : clean; margin-left : 205px;">
                         <!-- 여기에 include 할 것 -->
-                        <div id="slides" style="margin-top : 20px; margin-left : 40px; width : 700px; height : 500px;">
+                        <div id="slides" style="margin-top : 20px; margin-left : 40px; width : 700px; height : 500px; position: relative;">
                             <img class="mySlides" src="../style/images/img1.jpg" />
                             <img class="mySlides" src="../style/images/img2.jpg" />
                             <img class="mySlides" src="../style/images/img3.jpg" />
                             <img class="mySlides" src="../style/images/img4.jpg" />
+                            
+                            <a id="prevBanner" class="bannercontrol">&#10094;</a>
+                            <a id="nextBanner" class="bannercontrol">&#10095;</a>
 
-                            <button class="black" onclick="plusDivs(-1)">&#10094;</button>
-                            <button class="black" onclick="plusDivs(1)">&#10095;</button>
+                            <div style="text-align:center">
+                                <span class="dot" ></span> 
+                                <span class="dot" ></span> 
+                                <span class="dot" ></span> 
+                                <span class="dot" ></span> 
+                            </div>
                         </div>
                     </div>
                 </div>
