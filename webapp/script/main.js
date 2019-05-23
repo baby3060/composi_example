@@ -1,6 +1,6 @@
 // rank 가져오는 구문 추가 하기(실제로 돌릴때는 ajax로)
 function getRank() {
-    let searchTop = new Array();
+    var searchTop = new Array();
 
     searchTop.push("test1");
     searchTop.push("test2");
@@ -18,20 +18,20 @@ function getRank() {
     searchTop.push("test14");
     searchTop.push("test15");
 
-    let rank = searchTop.slice(0, 10);
+    var rank = searchTop.slice(0, 10);
 
     return rank;
 }
 
-let counter = {
+var counter = {
     idx : 0,
     rank : ''
 };
 
 function spanPrint(counter) {
     var rankingObj = document.getElementById('ranking');
-
-    rankingObj.innerHTML = counter.rank[counter.idx];
+    var htmlString = "<a>[" + (counter.idx + 1) + "]." + counter.rank[counter.idx] + "</a>";
+    rankingObj.innerHTML = htmlString;
 }
 
 (function() {
@@ -39,16 +39,14 @@ function spanPrint(counter) {
 
     setTimeout(function(counter) {
         spanPrint(counter);
-        counter.idx = counter.idx + 1;
 
         setInterval(function(counter) {
-            spanPrint(counter);
+            counter.idx = counter.idx + 1;
 
-            if( counter.idx > 9 ) {
+            if( counter.idx > counter.rank.length - 1 ) {
                 counter.idx = 0;
-            } else {
-                counter.idx = counter.idx + 1;
-            }
+            } 
+            spanPrint(counter);
         }, 5000, counter);
 
     }, 1, counter)
@@ -56,20 +54,21 @@ function spanPrint(counter) {
 
 
 (function() {
-    let toplist = document.getElementById("toplist");
-    let menu = toplist.children;
-    let menuLength = menu.length;
-    let menuList = menu;
+    var toplist = document.getElementById("toplist");
+    var menu = toplist.children;
+    var menuLength = menu.length;
+
+    var menuList = menu;
     
-    for( let i = 0; i < menuLength; i++ ) {
+    for( var i = 0; i < menuLength; i++ ) {
         (
             function(j) {
-                let obj = menuList[j];
+                var obj = menuList[j];
                 if( obj.addEventListener ) {
                     obj.addEventListener(
                         'click',
                         function() {
-                            alert(obj.name);
+                            alert(obj.id);
                         },
                         false
                     );
@@ -89,8 +88,8 @@ function spanPrint(counter) {
 // jQuery의 one을 자바스크립트로 구현
 function submit(event) {
     var e = event || window.event;
-    let searchForm = document.getElementById("mainform");
-    let search_text = document.getElementById("search_text").value;
+    var searchForm = document.getElementById("mainform");
+    var search_text = document.getElementById("search_text").value;
     if( search_text === '' ) {
         alert("검색어를 입력하세요");
     } else {
@@ -99,9 +98,10 @@ function submit(event) {
         searchForm.submit();
     }
 }
+
 // Event Listener - IIFE 사용하여 등록
 (function() {    
-    let search_top_submit = document.getElementById("search_top");
+    var search_top_submit = document.getElementById("search_top");
     if(search_top_submit.addEventListener) {
         search_top_submit.addEventListener('click', submit, false);
     } else {
@@ -111,7 +111,7 @@ function submit(event) {
 
 (function() {
             
-    let accordion = document.getElementsByClassName("accordion");
+    var accordion = document.getElementsByClassName("accordion");
     for( var i = 0; i < accordion.length; i++ ) {
         // 클로저
         (function(j) {
@@ -175,20 +175,20 @@ function moveEvent(e) {
 }
 
 (function() {
-    let leftMenu = document.getElementsByClassName("item");
+    var leftMenu = document.getElementsByClassName("item");
     
-    let menuArr = new Array();
-    let menuLength = leftMenu.length;
-    for( let i = 0; i < menuLength; i++ ) {
-        let innerLength = leftMenu[i].children.length;
-        let inner = leftMenu[i].children;
-        for( let j = 0; j < innerLength; j++ ) {
+    var menuArr = new Array();
+    var menuLength = leftMenu.length;
+    for( var i = 0; i < menuLength; i++ ) {
+        var innerLength = leftMenu[i].children.length;
+        var inner = leftMenu[i].children;
+        for( var j = 0; j < innerLength; j++ ) {
             menuArr.push(inner[j]);
         }
     }
     menuLength = menuArr.length;
-    for( let i = 0; i < menuLength; i++ ) {
-        let obj = menuArr[i];
+    for( var i = 0; i < menuLength; i++ ) {
+        var obj = menuArr[i];
         // 
         if( obj.localName === 'a' ) {
             if( obj.addEventListener ) {
@@ -211,20 +211,12 @@ function moveEvent(e) {
     }
 })();
 
-var slideIdx = 1;
-
-function plusDivs(n) {
-    showDivs(slideIdx += n);
-}
-
-(function() {
-    setInterval(plusDivs, 1000, 1);
-})();
+var slideIdx = 0;
 
 function showDivs(idx) {
-    let slideImage = document.getElementsByClassName("mySlides");
+    var slideImage = document.getElementsByClassName("mySlides");
 
-    let slideLength = slideImage.length;
+    var slideLength = slideImage.length;
 
     if( idx > slideLength ) {
         slideIdx = 1;
@@ -234,12 +226,22 @@ function showDivs(idx) {
         slideIdx = slideLength;
     }
 
-    for( let imgIdx = 0; imgIdx < slideLength; imgIdx++ ) {
+    for( var imgIdx = 0; imgIdx < slideLength; imgIdx++ ) {
         if(imgIdx == (slideIdx - 1)) {
             slideImage[imgIdx].style.display = "block";
         } else {
             slideImage[imgIdx].style.display = "none";
         }
     }
-
 }
+
+function plusDivs(n) {
+    showDivs(slideIdx += n);
+}
+
+(function() {
+    setTimeout(function() {
+        plusDivs(1);
+        setInterval(plusDivs, 1000, 1);
+    }, 0, 1);
+})();

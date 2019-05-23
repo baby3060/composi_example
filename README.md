@@ -3,6 +3,8 @@
 ## JSP 만 이용해서 만든 다음, 로직이나 화면은 그대로 두고 스프링 프레임워크 적용(tob_web)
 ## 여러가지 테스트해볼 목적으로 만듦.
 ### Maven으로 webapp을 만들 경우, Eclipse의 Tomcat 서버를 시작하는 것이 아닌 Maven의 tomcat 플러그인을 실행한다고 생각
+#### Safari에서는 javascript let 먹통
+
 > 선행 작업
 <ol>
     <li>tomcat-user의 role 확인 : manager-gui,manager-script</li>
