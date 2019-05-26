@@ -3,219 +3,174 @@
 
 body {
     margin : 0; padding : 0;
-}
-
-@media(min-width : 750px) {
-    header {
-        height: 50px;
-    }
-
-    #topmenu {
-        display:table-row;
-        float : clean;
-        width : 100%;
-        margin-left : 300px;
-    }
-
-    #topmenu li {
-        margin : 0 10px;
-        float : left;
-    }
-
-    #topmenu li > a {
-        display:table-cell;
-        vertical-align: middle;
-        height : 50px;
-    }
-
-    .select {
-        color : black;
-    }
-
-    .mySlides {
-        margin : 0; 
-        padding : 0;
-        width : 700px;
-        height : 500px;
-        display : none;
-    }
-
-    .black {
-        background-color : black;
-        color : white;
-        border : 0;
-        width : 50px;
-        height : 50px; 
-    }
-
-    #ranking > a {
-        color : #010029;
-    }
-
-    #ranking > a:hover {
-        text-decoration: underline;
-    }
-
-    .bannercontrol {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        margin-top: -22px;
-        padding: 16px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-    }
-
-    .dot {
-        cursor: pointer;
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-      }
-    
-      .dotactive, .dot:hover {
-        background-color: #717171;
-      }
-
-      .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
-        animation-name: fade;
-        animation-duration: 1.5s;
-      }
-      
-      @-webkit-keyframes fade {
-        from {opacity: .4} 
-        to {opacity: 1}
-      }
-      
-      @keyframes fade {
-        from {opacity: .4} 
-        to {opacity: 1}
-      }
-
-    .bannercontrol:hover {
-        background-color: rgba(0,0,0,0.8);
-    }
-
-    #nextBanner {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-
-    .black:hover {
-        background-color : darkred;
-    }
-
-    .accordion {
-        background-color: #2008A6;
-        color: #eee;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15pt;
-        transition: 0.4s;
-    }
-
-    .accordion > p:after {
-        content: '\002B';
-        float: right;
-    }
-
-    .accordion > .item {
-        font-size : 13pt;
-        padding : 15px;
-        display: none;
-        margin-top : 25px;
-        line-height : 45px;
-    }
-
-    .item > a {
-        color: #eee;
-    }
-
-    .active > .item {
-        display : block;
-        background-color: #B300FF;
-    }
-
-    .active {
-        background-color : #690CE8;
-    }
-
-    .active > p:after {
-        content: "\2212";
-    }
-    
-    .item {
-        font-size : 10pt;
-        padding: 0 18px;
-        background-color: white;    
-        transition: max-height 0.2s ease-out;
-    }
-
-    .home {
-        width: 25px; height: 25px;
-        background: url('../images/top.png') no-repeat -10px -100px ;
-    }
-
-    .login {
-        width: 54px; height: 25px;
-        background: url('../images/top.png') no-repeat -102px -10px;
-    }
-
-    .info {
-        width: 42px; height: 25px;
-        background: url('../images/top.png') no-repeat;
-        background-position: -102px -55px;
-    }
-
-    .join {
-        width: 72px; height: 25px;
-        background: url('../images/top.png') no-repeat -10px -10px;
-    }
-
-    .logout {
-        width: 72px; height: 25px;
-        background: url('../images/top.png') no-repeat -10px -55px;
-    }
-
-    #topmenu div {
-        float : both;
-    }
-
-    .accordion:hover {
-        background-color: #690CE8;
-    }
-}
-
-
-@media(max-width : 750px) {
-    header {
-        display: none;
-    }
-}
-
-#topmenu li > a {
-    color : lightskyblue;
-}
-
-#topmenu li > a:hover {
-    color : darkblue;
+    background-color : white;
 }
 
 #wrap {
-    width: 100%;
+    width : 1300px auto !important;
+    padding : 0;
+    max-width : 1300px;
 }
+
+#container {
+    width : 100%;  float : clear;
+}
+
+#search_button {
+    padding-left : 10px; padding-right : 10px; padding-top : 6px; padding-bottom : 6px; margin : -5px; background-color:#0B09AB; border-radius: 10%;
+}
+
+/* 최상단 */
+#topmenu {
+    margin : 0; padding : 0; height : 60px;
+}
+
+#topmenu > #logo {
+    float : left; width : 190px; height : 100%; background-color : blue;
+}
+
+#topmenu > #searchdiv {
+    float : right; height : 100%;
+    max-width : 500px;
+    width : 500px;
+}
+
+#topmenu > #submenu {
+    height : 100%;
+    float : both;
+    text-align : left;
+}
+
+#subinner {
+    font-size : 6pt; 
+    padding-left : 25px; 
+    line-height: 60px;
+    font-weight: bold;
+}
+
+#subinner > .inner_menu {
+    margin-left : 5px;
+    margin-right : 5px;
+    cursor : pointer;
+}
+
+#search {
+    width: 200px;
+    padding: 8px 12px;
+    margin: 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* 최상단 */
+
+/* Left */
+.innerspan {
+    display:inline-block; 
+    
+    border-bottom : 1px solid #3096BA;
+    background-color : #3072BA;
+    color : white;
+    height : 35px;
+    padding-left : 17px;
+    padding-top : 15px;
+    width : 173px;
+}
+
+.itemmenu {
+    background-color : #000F5C;
+    overflow: hidden;
+    font-size : 10pt;
+    line-height: 35px;
+    padding-left : 25px; 
+    color : white;
+    width : 165px;
+}
+
+.hidden {
+    display : none;
+}
+
+.innerspan:hover {
+    cursor : pointer;
+    text-decoration: underline;
+}
+
+.item:hover {
+    cursor : pointer;
+    text-decoration: underline;
+}
+
+/* Left */
+
+@media (min-width: 1023px) {
+    #wrap {
+        height: auto !important;
+        overflow: visible !important;
+    }
+}
+
+.show {
+    display : block;
+    -webkit-animation: slidein 1s ease-out;
+    /* Safari 4+ */
+    -moz-animation: slidein 1s ease-out;
+    /* Fx 5+ */
+    -o-animation: slidein 1s ease-out;
+    /* Opera 12+ */
+    animation: slidein 1s ease-out;
+    /* IE 10+ */
+}
+
+#leftbar {
+    float : left; width : 190px; 
+}
+
+
+@media screen and (min-width : 1491px) {
+    #wrap {
+        margin : 0 auto;
+    }
+}
+
+.slidein {
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -moz-animation-name: slidein;
+    -webkit-animation-name: slidein;
+    animation-name: slidein;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -moz-animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+  }
+
+/*Animation functionality*/
+@-webkit-keyframes slidein {
+    0% { height: 0; }
+    100% { height : 280px; }
+}
+
+@-moz-keyframes slidein {
+    0% { height: 0; }
+    100% { height: 280px; }
+}
+@-o-keyframes slidein {
+    0% { height: 0; }
+    100% { height: 280px; }
+}
+
+@keyframes slidein  {
+    0% { height: 0; } 
+    100% { height : 280px;}
+}
+
+/*
+    calc로는 element 의 height를 못 계산하니까 눈대충으로 가장 어색하지 않은 300으로 맞춤
+*/

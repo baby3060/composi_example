@@ -6,93 +6,113 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../style/css/main.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
 </head>
-<body>
-    <div class="container">
-        <form action="" id="mainform" onsubmit="return false">
-            <div id="wrap">
-                <header style="width : 100%;">
-                    <div style="float : left; width : 205px;">Logo</div>
-                    <div id="topmenu" >
-                        <div>
-                            <ul id="toplist">
-                                <li id="top_home"><a href="#" >홈</a></li>
-                                <li id="top_login"><a href="#" >로그인</a></li>
-                                <li id="top_join"><a href="#" >회원가입</a></li>
-                                <li id="top_info"><a href="#" >회원정보</a></li>
-                            </ul>
+<body >
+    <div id="wrap">
+        <form action="">
+            <div id="topmenu">
+                <div id="logo" >
+                    Logo 위치
+                </div>
+                
+                <div id="searchdiv">
+                    <div style="margin-top : 15px;">
+                        <input type="text" id="search" placeholder="통합검색" />
+                        <span id="search_button" ><i class="fas fa-search" style="color : white"></i></span>
+
+                        <span style="margin-left : 10px; font-size : 10pt; font-weight: bold;">HOT 검색어 : </span>
+                        <span id="ranking" style="font-size : 10pt;">승차권예매, 경영공시</span>
+                    </div>
+                </div>
+                <div id="submenu">
+                    <span id="subinner">
+                        <a class="inner_menu" data-cmd="home">홈</a>/<a class="inner_menu" data-cmd="login">로그인</a>/<a class="inner_menu" data-cmd="join">통합회원가입</a>/<a class="inner_menu" data-cmd="allmenu">전체메뉴</a>
+                    </span>
+                </div>
+            </div>
+
+            <div id="container" style="height : 100%;">
+                <div id="leftbar">
+                    <nav>
+                        <span class="innerspan">정보공개</span>
+                        <div class="itemmenu hidden">
+                            <div class="item" data-url="/info" data-cmd="inform">정보공개 제도안내</div>
+                            <div class="item" data-url="/info" data-cmd="preinfo">사전정보공표</div>
+                            <div class="item" data-url="/info" data-cmd="list">정보목록</div>
+                            <div class="item" data-url="/info" data-cmd="public">정보공개 청구</div>
+                            <div class="item" data-url="/info" data-cmd="noblind">사업실명제</div>
+                            <div class="item" data-url="/info" data-cmd="present">소송현황</div>
+                            <div class="item" data-url="/info" data-cmd="data">공공데이터</div>
+                            <div class="item" data-url="/info" data-cmd="refroom">자료실</div>
                         </div>
                         
-                        <div id="top_search_div" style="margin-top : 10px; width : 1000px; ">
-                            <input type="text" id="search_text" placeholder="통합검색" size="15"/><button id="search_top" >검색</button>
-                            <span style="margin-left : 25px;">HOT 검색어</span> : <span id="ranking"></span>
+                        <span class="innerspan">사업분야</span>
+                        <div class="itemmenu hidden">
+                            <div class="item" data-url="/buise">여객사업</div>
+                            <div class="item" data-url="/buise">광역철도사업</div>
+                            <div class="item" data-url="/buise">종합물류사업</div>
+                            <div class="item" data-url="/buise">자산개발사업</div>
+                            <div class="item" data-url="/buise">해외사업 º 국제협력</div>
+                            <div class="item" data-url="/buise">시설유지보수사업</div>
                         </div>
-                    </div>
-                </header>
-        
-                <div id="mainbody" style="width : 100%;">
-                    <div id="left" style="width : 170px; height : 100%; float : left;">
-                        <nav>
-                            <ul>
-                                <li class="accordion">
-                                    <p>정보공개</p>
-                                    <ul class="item hidden">
-                                        <a href="#"><li id="notice">공지사항</li></a>
-                                        <a href="#"><li id="event">이벤트</li></a>
-                                    </ul>
-                                </li>
-                                <li class="accordion">
-                                    <p>기차표예매</p>
-                                    <ul class="item hidden">
-                                        <a href="#"><li id="book">철도예매</li></a>
-                                        <a href="#"><li id="travel">기차여행</li></a>
-                                    </ul>
-                                </li>
-                                <li class="accordion">
-                                    <p>고객지원</p>
-                                    <ul class="item hidden">
-                                        <a href="#"><li id="compli">불만사항</li></a>
-                                        <a href="#"><li id="board">자유게시판</li></a>
-                                        <a href="#"><li id="board">요청사항</li></a>
-                                        <a href="#"><li id="recommend">칭찬합시다</li></a>
-                                    </ul>
-                                </li>
-                                <li class="accordion">
-                                    <p>소개</p>
-                                    <ul class="item hidden">
-                                        <a href="#"><li id="info1">사업분야</li></a>
-                                        <a href="#"><li id="map">찾아오시는 길</li></a>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    
-                    <!-- 본문 -->
-                    <div id="content" style="float : clean; margin-left : 205px;">
-                        <!-- 여기에 include 할 것 -->
-                        <div id="slides" style="margin-top : 20px; margin-left : 40px; width : 700px; height : 500px; position: relative;">
-                            <img class="mySlides" src="../style/images/img1.jpg" />
-                            <img class="mySlides" src="../style/images/img2.jpg" />
-                            <img class="mySlides" src="../style/images/img3.jpg" />
-                            <img class="mySlides" src="../style/images/img4.jpg" />
-                            
-                            <a id="prevBanner" class="bannercontrol">&#10094;</a>
-                            <a id="nextBanner" class="bannercontrol">&#10095;</a>
 
-                            <div style="text-align:center">
-                                <span class="dot" ></span> 
-                                <span class="dot" ></span> 
-                                <span class="dot" ></span> 
-                                <span class="dot" ></span> 
-                            </div>
+                        <span class="innerspan">열린경영</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">지속가능경영</div>
+                            <div class="item">철도안전</div>
+                            <div class="item">윤리경영</div>
+                            <div class="item">사회공헌</div>
+                            <div class="item">동반성장</div>
+                            <div class="item">환경경영</div>
+                            <div class="item">코레일 사규</div>
+                            <div class="item">사규 제º개정 안내</div>
                         </div>
-                    </div>
+                        
+                        <span class="innerspan">사이버통보실</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">보도자료</div>
+                            <div class="item">코레일 NEWS</div>
+                            <div class="item">코레일 SNS</div>
+                            <div class="item">간행물</div>
+                            <div class="item">공지사항</div>
+                        </div>
+                        
+                        <span class="innerspan">고객지원</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">고객의소리</div>
+                            <div class="item">부패추방센터</div>
+                            <div class="item">예산낭비신고센터</div>
+                            <div class="item">고객서비스현장</div>
+                            <div class="item">철도체험학습장</div>
+                            <div class="item">청렴게시판</div>
+                        </div>
+                        
+                        <span class="innerspan">코레일소개</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">공사소개</div>
+                            <div class="item">CEO</div>
+                            <div class="item">조직 º 기능</div>
+                            <div class="item">계열사</div>
+                            <div class="item">CI</div>
+                            <div class="item">채용정보</div>
+                            <div class="item">경영공시(IR)</div>
+                            <div class="item">철도명예의전당</div>
+                            <div class="item">코레일 사규</div>
+                            <div class="item">스포츠단</div>
+                            <div class="item">오케스트라</div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div id="content">
+                    
                 </div>
             </div>
         </form>
     </div>
-    
-    <script src="../script/main.js"></script>
+    <script src="../script/common.js"></script>
+    <script src="../script/main2.js"></script>
 </body>
 </html>

@@ -1,60 +1,3 @@
-// rank 가져오는 구문 추가 하기(실제로 돌릴때는 ajax로)
-function getRank() {
-    var searchTop = new Array();
-
-    searchTop.push("test1");
-    searchTop.push("test2");
-    searchTop.push("test3");
-    searchTop.push("test4");
-    searchTop.push("test5");
-    searchTop.push("test6");
-    searchTop.push("test7");
-    searchTop.push("test8");
-    searchTop.push("test9");
-    searchTop.push("test10");
-    searchTop.push("test11");
-    searchTop.push("test12");
-    searchTop.push("test13");
-    searchTop.push("test14");
-    searchTop.push("test15");
-
-    var rank = searchTop.slice(0, 10);
-
-    return rank;
-}
-
-var counter = {
-    idx : 0,
-    rank : ''
-};
-
-function spanPrint(counter) {
-    var rankingObj = document.getElementById('ranking');
-    var htmlString = "<a href='#'>";
-    htmlString = htmlString + "" + (counter.idx + 1) + "." + counter.rank[counter.idx] + "";
-    htmlString = htmlString + "</a>";
-    rankingObj.innerHTML = htmlString;
-}
-
-(function() {
-    counter['rank'] = getRank();
-
-    setTimeout(function(counter) {
-        spanPrint(counter);
-
-        setInterval(function(counter) {
-            counter.idx = counter.idx + 1;
-
-            if( counter.idx > counter.rank.length - 1 ) {
-                counter.idx = 0;
-            } 
-            spanPrint(counter);
-        }, 5000, counter);
-
-    }, 1, counter)
-})();
-
-
 // 최상단 홈, 로그인, 회원정보 등
 (function() {
     var toplist = document.getElementById("toplist");
@@ -268,7 +211,6 @@ function plusDivs(n) {
         setInterval(plusDivs, 10000, 1);
     }, 0, 1);
 })();
-
 
 (function() {
     var slideDot = document.getElementsByClassName("dot");
