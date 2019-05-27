@@ -2,7 +2,6 @@
 @import url("font.css");
 
 body {
-    margin : 0; padding : 0;
     background-color : white;
 }
 
@@ -22,7 +21,7 @@ body {
 
 /* 최상단 */
 #topmenu {
-    margin : 0; padding : 0; height : 60px;
+    height : 60px;
 }
 
 #topmenu > #logo {
@@ -33,6 +32,10 @@ body {
     float : right; height : 100%;
     max-width : 500px;
     width : 500px;
+}
+
+#content {
+    margin-left : 190px;
 }
 
 #topmenu > #submenu {
@@ -174,3 +177,37 @@ body {
 /*
     calc로는 element 의 height를 못 계산하니까 눈대충으로 가장 어색하지 않은 300으로 맞춤
 */
+
+/* Banner */
+.banner {
+    width : 100%;
+    height : 500px;
+    animation: bannerfaidin 1s;
+    -moz-animation: bannerfaidin 1s; /* Firefox */
+    -webkit-animation: bannerfaidin 1s; /* Safari and Chrome */
+    -o-animation: bannerfaidin 1s; /* Opera */
+}
+
+.btn_play {
+    color : transparent;
+    
+    background-size : 20px; background-position: center; z-index : 99;
+}
+
+@keyframes bannerfaidin {
+    0% { opacity:0.2; }
+    100% { opacity:1; }
+}
+@-moz-keyframes bannerfaidin { 
+    0% { opacity:0.2; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes bannerfaidin { 
+    0% { opacity:0.2; }
+    100% { opacity:1; }
+}
+@-o-keyframes bannerfaidin { 
+    0% { opacity:0.2; }
+    100% { opacity:1; }
+}
+/* Banner */

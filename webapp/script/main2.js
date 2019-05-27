@@ -120,3 +120,42 @@ function loadPage(url, cmd) {
     }
 })();
 // Left Menu Click
+
+
+(function(){
+    var printIdx = 0;
+    var sliderList = document.getElementsByClassName("banner");
+    var interval;
+    var listLength = sliderList.length;
+
+    var timerFunc = function() {
+
+        if(!interval) {
+            interval = setInterval(timerFunc, 5000);
+        }
+
+        var obj;
+
+        for( var i = 0; i < listLength; i++ ) {
+            obj = sliderList[i];
+
+            sliderDisplay(obj, (printIdx === i));
+        }
+
+        if( printIdx >= (listLength - 1) ) {
+            printIdx = 0;
+        } else {
+            printIdx++;
+        }
+    };
+
+    setTimeout(timerFunc, 0);
+})();
+
+function sliderDisplay(obj, showFlag) {
+    if(showFlag) {
+        obj.style.display = 'block';
+    } else {
+        obj.style.display = 'none';
+    }
+}
