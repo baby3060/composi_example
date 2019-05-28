@@ -1,3 +1,23 @@
+// Image 만들기
+(function() {
+    var target = document.getElementById("sliderdot");
+
+    var imagesLength = document.getElementsByClassName("banner").length;
+    
+    target.style.display = "none";
+
+    if( imagesLength > 0 ) {
+        for( var i = 0; i < imagesLength; i++ ) {
+            var dot = document.createElement("span");
+            dot.textContent = "1";
+            dot.className = "dot";
+            target.appendChild(dot);    
+        }
+    }
+
+    target.style.display = "inline-block";
+})();
+
 // Top Menu Click
 function topClick(cmd) {
     alert(cmd);
@@ -121,41 +141,61 @@ function loadPage(url, cmd) {
 })();
 // Left Menu Click
 
+var printIdx = 0;
 
 (function(){
-    var printIdx = 0;
-    var sliderList = document.getElementsByClassName("banner");
+    
     var interval;
-    var listLength = sliderList.length;
-
+    
     var timerFunc = function() {
 
         if(!interval) {
             interval = setInterval(timerFunc, 5000);
         }
-
-        var obj;
-
-        for( var i = 0; i < listLength; i++ ) {
-            obj = sliderList[i];
-
-            sliderDisplay(obj, (printIdx === i));
-        }
-
-        if( printIdx >= (listLength - 1) ) {
-            printIdx = 0;
-        } else {
-            printIdx++;
-        }
+        hitSlider();
     };
 
     setTimeout(timerFunc, 0);
 })();
 
-function sliderDisplay(obj, showFlag) {
+function hitSlider() {
+    var sliderList = document.getElementsByClassName("banner");
+    var sliderDot = document.getElementsByClassName("dot");
+
+    var listLength = sliderList.length;
+
+    var obj;
+    var dotObj;
+
+    for( var i = 0; i < listLength; i++ ) {
+        obj = sliderList[i];
+        dotObj = sliderDot[i];
+
+        sliderDisplay(obj, (printIdx === i), dotObj);
+    }
+
+    if( printIdx >= (listLength - 1) ) {
+        printIdx = 0;
+    } else {
+        printIdx++;
+    }
+}
+
+function setPrintIdx(value) {
+    printIdx = value;
+    hitSlider();
+}
+
+function sliderDisplay(obj, showFlag, dotObj) {
+    var dotClassName = dotObj.className;
+
     if(showFlag) {
+        dotClassName = dotClassName + " selecteddot";
         obj.style.display = 'block';
     } else {
+        dotClassName = dotClassName.replace(/selecteddot/gi, "");
         obj.style.display = 'none';
     }
+
+    dotObj.className = dotClassName;
 }
