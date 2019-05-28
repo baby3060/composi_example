@@ -188,6 +188,10 @@ body {
     -o-animation: bannerfadein 1s; /* Opera */
 }
 
+img.banner:hover {
+    cursor : pointer;
+}
+
 .slidelink {
     color : transparent; 
     z-index : 99;

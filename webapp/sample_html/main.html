@@ -109,28 +109,28 @@
                 <div id="content">
                     <div id="slider">
                         <div style="position : absolute; padding-top : 15px;">
-                            <a href="#" onclick="" class="slidelink" style="background : url(../style/images/running.gif) no-repeat; background-size : 20px; background-position: center; "><span>플레이</span></a>
-                            <a href="#" onclick="" class="slidelink" style="background : url(../style/images/suspend.gif) no-repeat; background-size : 20px; background-position: center; "><span>정지</span></a>
+                            <a href="#" onclick="play()" class="slidelink" alt="실행">
+                                <img src="../style/images/running.gif" style="margin-left : 10px; width : 20px; height : 20px;"/>
+                            </a>
+                            <a href="#" onclick="pause()" class="slidelink" alt="일시정지">
+                                <img src="../style/images/suspend.gif" style="margin-left : 10px; width : 20px; height : 20px; "/>
+                            </a>
                             <span id="sliderdot"></span>
                         </div>
-                        <a href="#">
-                            <img class="banner" src="../style/images/img1.jpg" alt="웃긴1" />
-                        </a>
-                        <a href="#">
-                            <img class="banner" src="../style/images/img2.jpg" alt="웃긴2" />
-                        </a>
-                        <a href="#">
-                            <img class="banner" src="../style/images/img3.jpg" alt="웃긴3" />
-                        </a>
-                        <a href="#">
-                            <img class="banner" src="../style/images/img4.jpg" alt="웃긴4" />
-                        </a>
+                        
+                        <img class="banner" data-url="img1" src="../style/images/img1.jpg" alt="웃긴1" />
+                        
+                        <img class="banner" data-url="img2" src="../style/images/img2.jpg" alt="웃긴2" />
+                        
+                        <img class="banner" data-url="img3" src="../style/images/img3.jpg" alt="웃긴3" />
+                        
+                        <img class="banner" data-url="img4" src="../style/images/img4.jpg" alt="웃긴4" />
                     </div>
                 </div>
             </div>
         </form>
     </div>
     <script src="../script/common.js"></script>
-    <script src="../script/main2.js"></script>
+    <script src="../script/main.js"></script>
 </body>
 </html>

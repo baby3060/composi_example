@@ -1,264 +1,259 @@
-// 최상단 홈, 로그인, 회원정보 등
+// Image 만들기
 (function() {
-    var toplist = document.getElementById("toplist");
-    var menu = toplist.children;
-    var menuLength = menu.length;
+    var target = document.getElementById("sliderdot");
 
-    var menuList = menu;
+    var imagesLength = document.getElementsByClassName("banner").length;
     
-    for( var i = 0; i < menuLength; i++ ) {
+    target.style.display = "none";
+
+    if( imagesLength > 0 ) {
+        for( var i = 0; i < imagesLength; i++ ) {
+            var dot = document.createElement("a");
+            dot.href = "#";
+            dot.textContent = "1";
+            dot.className = "dot";
+            target.appendChild(dot);    
+        }
+    }
+
+    target.style.display = "inline-block";
+})();
+
+// Top Menu Click
+function topClick(cmd) {
+    alert(cmd);
+}
+
+(function() {
+    var inner_menu = getElementsByClassName("inner_menu");
+
+    var innerLength = inner_menu.length;
+    var innerObj = "";
+    var cmd = "";
+
+    for( var i = 0; i < innerLength; i++ ) {
         (
             function(j) {
-                var obj = menuList[j];
-                if( obj.addEventListener ) {
-                    obj.addEventListener(
-                        'click',
-                        function() {
-                            alert(obj.id);
-                        },
-                        false
-                    );
+                innerObj = inner_menu[j];
+                if( innerObj.addEventListener ) {
+                    innerObj.addEventListener('click', function() {
+                        cmd = this.dataset.cmd;
+                        topClick(cmd);
+                    }, false);
                 } else {
-                    obj.attachEvent(
-                        'onclick',
-                        function() {
-                            alert(obj.name);
-                        },
-                        false
-                    );
+                    innerObj.attachEvent('onclick', function() {
+                        cmd = this.dataset.cmd;
+                        topClick(cmd);
+                    }, false);
                 }
             }
         )(i);
     }
 })();
 
-// jQuery의 one을 자바스크립트로 구현
-// 검색 버튼
-function submit(event) {
-    var e = event || window.event;
-    var searchForm = document.getElementById("mainform");
-    var search_text = document.getElementById("search_text").value;
-    if( search_text === '' ) {
-        alert("검색어를 입력하세요");
-    } else {
-        if(e.currentTarget.dataset.triggered) return;
-        e.currentTarget.dataset.triggered = true;
-        searchForm.submit();
-    }
-}
-
-// Event Listener - IIFE 사용하여 등록
-(function() {    
-    var search_top_submit = document.getElementById("search_top");
-    if(search_top_submit.addEventListener) {
-        search_top_submit.addEventListener('click', submit, false);
-    } else {
-        search_top_submit.attachEvent('onclick', submit);
-    }
-}());
-
-// Left Menu 아코디언 효과
+// Left Menu Click
 (function() {
-            
-    var accordion = document.getElementsByClassName("accordion");
-    for( var i = 0; i < accordion.length; i++ ) {
-        // 클로저
-        (function(j) {
-                var accordion_obj = accordion[j];
-                if(accordion_obj.addEventListener) {
-                    accordion_obj.addEventListener('click'
-                    , function() {
-                        this.classList.toggle("active");
-                        if( this.classList.contains("active") ) {
-                            var toggleList = document.getElementsByClassName("active");
-                            if(toggleList.length > 0) {
-                                for( var inner = 0; inner < toggleList.length; inner++ ) {
-                                    if(toggleList[inner] != this) {
-                                        toggleList[inner].classList.remove("active")
-                                    }
-                                }   
+    var innerspan = getElementsByClassName("innerspan");
+    var innerObj = "";
+    var itemmenu = "";
+    var innerLength = innerspan.length;
+    var showLength = 0;
+    var showMenu = "";
+    for( var i = 0; i < innerLength; i++ ) {
+        (
+            function(j) {
+                innerObj = innerspan[j];
+                if(innerObj.addEventListener) {
+                    innerObj.addEventListener("click", function() {
+                        itemmenu = getElementsByClassName("itemmenu")[j];
+                        
+                        showMenu = getElementsByClassName("show");
+                        
+                        showLength = showMenu.length;
+                        if( showLength > 0 ) {
+                            
+                            for( var showI = 0; showI < showLength; showI++ ) {
+                                if(showMenu[showI] !== itemmenu) {
+                                    showMenu[showI].classList.remove("show");
+                                } 
                             }
-                        } 
-                    }
-                    , false);
+                        }
+
+                        itemmenu.classList.toggle("show");
+                    }, false);
                 } else {
-                    accordion_obj.attachEvent('onclick'
-                    , function() {
-                        this.classList.toggle("active");
-                        if( this.classList.contains("active") ) {
-                            var toggleList = document.getElementsByClassName("active");
-                            if(toggleList.length > 0) {
-                                for( var inner = 0; inner < toggleList.length; inner++ ) {
-                                    if(toggleList[inner] != this) {
-                                        toggleList[inner].classList.remove("active")
-                                    }
-                                }   
+                    innerObj.attachEvent("onclick", function() {
+                        itemmenu = getElementsByClassName("itemmenu")[j];
+                        
+                        showMenu = getElementsByClassName("show");
+                        
+                        showLength = showMenu.length;
+                        if( showLength > 0 ) {
+                            
+                            for( var showI = 0; showI < showLength; showI++ ) {
+                                if(showMenu[showI] !== itemmenu) {
+                                    showMenu[showI].classList.remove("show");
+                                } 
                             }
-                        } 
-                    });
+                        }
+
+                        itemmenu.classList.toggle("show");
+                    }, false);
                 }
-            }
-        )(i);
-    }
-}());
-
-// Left Menu 클릭
-function moveEvent(e) {
-    var selectObj = document.getElementsByClassName("select");
-    
-    var event = e || window.event;
-    if( selectObj.length > 0 ) {
-        var obj = selectObj[0];
-        if( e.target == obj ) {
-    
-        } else {
-            obj.classList.remove('select');
-            e.target.classList.add('select');
-        }
-    } else {
-        e.target.classList.add('select');
-    }
-    
-    // 이동시키기
-
-
-    if(event.stopPropagation) event.stopPropagation();
-    event.cancelBubble = true;
-}
-
-// Left Menu 이벤트 등록
-(function() {
-    var leftMenu = document.getElementsByClassName("item");
-    
-    var menuArr = new Array();
-    var menuLength = leftMenu.length;
-    for( var i = 0; i < menuLength; i++ ) {
-        var innerLength = leftMenu[i].children.length;
-        var inner = leftMenu[i].children;
-        for( var j = 0; j < innerLength; j++ ) {
-            menuArr.push(inner[j]);
-        }
-    }
-    menuLength = menuArr.length;
-    for( var i = 0; i < menuLength; i++ ) {
-        var obj = menuArr[i];
-        // 
-        if( obj.localName === 'a' ) {
-            if( obj.addEventListener ) {
-                obj.addEventListener(
-                    'click', function(event) {
-                        moveEvent(event);
-                    }, false
-                );
                 
-            } else {
-                obj.attachEvent(
-                    'onclick', function(event) {
-                        moveEvent(event);
-                    }, false
-                );
             }
-        } else {
-            continue;
-        }
+        )(i);
     }
 })();
 
-// Main의 이미지 slider banner
-var slideIdx = 0;
-
-function showDivs(idx) {
-
-    var slideImage = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-
-    var dotsLength = dots.length;
-
-    for (var i = 0; i < dotsLength; i++) {
-        dots[i].classList.remove("dotactive");
-    }
-
-    var slideLength = slideImage.length;
-
-    slideIdx = idx;
-
-    if( idx > slideLength ) {
-        slideIdx = 1;
-    }
-
-    if( idx < 1 ) {
-        slideIdx = slideLength;
-    }
-
-    for( var imgIdx = 0; imgIdx < slideLength; imgIdx++ ) {
-        if(imgIdx == (slideIdx - 1)) {
-            slideImage[imgIdx].style.display = "block";
-        } else {
-            slideImage[imgIdx].style.display = "none";
-        }
-    }
-
-    dots[slideIdx-1].classList.add("dotactive");
-}
-
-function plusDivs(n) {
-    showDivs(slideIdx += n);
+function loadPage(url, cmd) {
+    alert("url is " + url + ", cmd is " + cmd);
 }
 
 (function() {
-    setTimeout(function() {
-        plusDivs(1);
-        setInterval(plusDivs, 10000, 1);
-    }, 0, 1);
-})();
+    var item = getElementsByClassName("item");
 
-(function() {
-    var slideDot = document.getElementsByClassName("dot");
+    var itemLength = item.length;
+    var url = "";
+    var cmd = "";
 
-    var dotLength = slideDot.length;
+    for( var i = 0; i < itemLength; i++ ) {
+        (
+            function(j) {
+                var itemObj = item[j];
 
-    if(dotLength > 0) {
-        for(var i = 0; i < dotLength; i++) {
-            (
-                function(j) {
-                    var obj = slideDot[j];
+                if( itemObj.addEventListener ) {
+                    itemObj.addEventListener('click', function() {
+                        url = this.dataset.url;
+                        cmd = this.dataset.cmd;
+                        loadPage(url, cmd);
+                    }, false);
+                } else {
+                    itemObj.attachEvent('onclick', function() {
+                        url = this.dataset.url;
+                        cmd = this.dataset.cmd;
 
-                    if( obj.addEventListener ) {
-                        obj.addEventListener('click', function() {
-                            showDivs((j + 1));
-                        }, false);
-                    } else {
-                        obj.attachEvent('onclick', function() {
-                            showDivs((j + 1));
-                        }, false);
-                    }
+                        loadPage(url, cmd);
+                    }, false);
                 }
-            )(i)
+            }
+        )(i);
+    }
+})();
+// Left Menu Click
+
+var printIdx = 0;
+
+var timer;
+
+(function(){
+    window.setTimeout(hitSlider, 0);
+
+    timer = new IntervalTimer(hitSlider, 5000);
+})();
+
+function IntervalTimer(callback, nTime) {
+    var interval;
+    // 0 : 초기, 1 : running, 2 : stop, 3 : 재시작
+    var state = 0;
+
+    this.pause = function() {
+        if(state != 1) return;
+        window.clearInterval(interval);
+        state = 2;
+    };
+
+    this.resume = function() {
+        if(state != 2) return;
+        state = 3;
+        window.setTimeout(this.timeoutCallback, 0);
+    }
+
+    this.timeoutCallback = function() {
+        if(state != 3) return;
+        callback();
+        interval = window.setInterval(callback, nTime);
+        state = 1;
+    }
+
+    this.getInterval = function() {
+        return interval;
+    };
+
+    this.getState = function() {
+        return state;
+    }; 
+
+    if( state === 0) {
+        if(!interval) {
+            interval = window.setInterval(callback, nTime);
         }
-    }
-})();
+        state = 1;
+    } 
+}
 
-(function() {
-    var prevBtn = document.getElementById("prevBanner");
-    var nextBtn = document.getElementById("nextBanner");
-
-    if( prevBtn.addEventListener ) {
-        prevBtn.addEventListener('click', function() {
-            plusDivs(-1);
-        }, false);
+function play() {
+    if( timer.getState() == 2 ) {
+        timer.resume();
     } else {
-        prevBtn.attachEvent('onclick', function() {
-            plusDivs(-1);
-        }, false);
+        return;
+    }
+}
+
+function pause() {
+    if( timer.getState() == 1 ) {
+        timer.pause();
+    } else {
+        return;
+    }
+}
+
+function setPrintIdx(value) {
+    timer.pause();
+    printIdx = value;
+    timer.resume();
+}
+
+function hitSlider() {
+    var sliderList = document.getElementsByClassName("banner");
+    var sliderDot = document.getElementsByClassName("dot");
+
+    var listLength = sliderList.length;
+
+    var obj;
+    var dotObj;
+
+    for( var i = 0; i < listLength; i++ ) {
+        obj = sliderList[i];
+        dotObj = sliderDot[i];
+
+
+        (function(j) {
+            dotObj.addEventListener('click', function() {
+                setPrintIdx(j);
+            }, false);
+        })(i);
+
+        sliderDisplay(obj, (printIdx === i), dotObj);
     }
 
-    if( nextBtn.addEventListener ) {
-        nextBtn.addEventListener('click', function() {
-            plusDivs(1);
-        }, false);
+    if( printIdx >= (listLength - 1) ) {
+        printIdx = 0;
     } else {
-        nextBtn.attachEvent('onclick', function() {
-            plusDivs(1);
-        }, false);
+        printIdx++;
     }
-})();
+}
+
+function sliderDisplay(obj, showFlag, dotObj) {
+    var dotClassName = dotObj.className;
+
+    if(showFlag) {
+        dotClassName = dotClassName + " selecteddot";
+        obj.style.display = 'block';
+    } else {
+        dotClassName = dotClassName.replace(/selecteddot/gi, "");
+        obj.style.display = 'none';
+    }
+
+    dotObj.className = dotClassName;
+}
