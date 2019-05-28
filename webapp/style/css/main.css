@@ -182,10 +182,10 @@ body {
 .banner {
     width : 100%;
     height : 500px;
-    animation: bannerfaidin 1s;
-    -moz-animation: bannerfaidin 1s; /* Firefox */
-    -webkit-animation: bannerfaidin 1s; /* Safari and Chrome */
-    -o-animation: bannerfaidin 1s; /* Opera */
+    animation: bannerfadein 1s;
+    -moz-animation: bannerfadein 1s; /* Firefox */
+    -webkit-animation: bannerfadein 1s; /* Safari and Chrome */
+    -o-animation: bannerfadein 1s; /* Opera */
 }
 
 .slidelink {
@@ -202,30 +202,60 @@ body {
     color : transparent;
     border-radius: 18px;
     width : 20px;
-    opacity: 0.5;
+    opacity: 0.3;
     display : inline-block;
     margin-left : 10px;
 }
 
-.selecteddot {
-    opacity: 0.9;
-    width : 80px;
+a.dot:hover {
+    opacity : 0.7;
 }
 
-@keyframes bannerfaidin {
+.selecteddot {
+    opacity: 0.6;
+    width : 80px;
+    background-color : #8FFFC3;
+
+    animation: dotfade 1s;
+    -moz-animation: dotfade 1s; /* Firefox */
+    -webkit-animation: dotfade 1s; /* Safari and Chrome */
+    -o-animation: dotfade 1s; /* Opera */
+}
+
+@keyframes bannerfadein {
     0% { opacity:0.2; }
     100% { opacity:1; }
 }
-@-moz-keyframes bannerfaidin { 
+@-moz-keyframes bannerfadein { 
     0% { opacity:0.2; }
     100% { opacity:1; }
 }
-@-webkit-keyframes bannerfaidin { 
+@-webkit-keyframes bannerfadein { 
     0% { opacity:0.2; }
     100% { opacity:1; }
 }
-@-o-keyframes bannerfaidin { 
+@-o-keyframes bannerfadein { 
     0% { opacity:0.2; }
     100% { opacity:1; }
 }
+
+/* Dot fade */
+@keyframes dotfade {
+    50% { width : 35px; opacity : 0.4; }
+    98% { width : 79px;opacity : 0.5; }
+}
+@-moz-keyframes dotfade { 
+    50% { width : 35px; opacity : 0.4; }
+    98% { width : 79px;opacity : 0.5; }
+}
+@-webkit-keyframes dotfade { 
+    50% { width : 35px; opacity : 0.4; }
+    98% { width : 79px;opacity : 0.5; }
+}
+@-o-keyframes dotfade { 
+    50% { width : 35px; opacity : 0.4; }
+    98% { width : 79px;opacity : 0.5; }
+}
+/* Dot fade */
+
 /* Banner */

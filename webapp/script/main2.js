@@ -8,7 +8,8 @@
 
     if( imagesLength > 0 ) {
         for( var i = 0; i < imagesLength; i++ ) {
-            var dot = document.createElement("span");
+            var dot = document.createElement("a");
+            dot.href = "#";
             dot.textContent = "1";
             dot.className = "dot";
             target.appendChild(dot);    
@@ -143,20 +144,49 @@ function loadPage(url, cmd) {
 
 var printIdx = 0;
 
-(function(){
-    
-    var interval;
-    
-    var timerFunc = function() {
+var timer;
 
-        if(!interval) {
-            interval = setInterval(timerFunc, 5000);
-        }
-        hitSlider();
+(function(){
+    window.setTimeout(hitSlider, 0);
+
+    timer = new IntervalTimer(hitSlider, 5000);
+})();
+
+function IntervalTimer(callback, nTime) {
+    var interval;
+    // 0 : 초기, 1 : running, 2 : stop, 3 : 재시작
+    var state = 0;
+
+    this.pause = function() {
+        if(state != 1) return;
+        window.clearInterval(interval);
+        state = 2;
     };
 
-    setTimeout(timerFunc, 0);
-})();
+    this.resume = function() {
+        if(state != 2) return;
+        state = 3;
+        window.setTimeout(this.timeoutCallback, 0);
+    }
+
+    this.timeoutCallback = function() {
+        if(state != 3) return;
+        callback();
+        interval = window.setInterval(callback, nTime);
+        state = 1;
+    }
+
+    if( state != 1 ) {
+        interval = window.setInterval(callback, nTime);
+        state = 1;
+    }
+}
+
+function setPrintIdx(value) {
+    timer.pause();
+    printIdx = value;
+    timer.resume();
+}
 
 function hitSlider() {
     var sliderList = document.getElementsByClassName("banner");
@@ -171,6 +201,13 @@ function hitSlider() {
         obj = sliderList[i];
         dotObj = sliderDot[i];
 
+
+        (function(j) {
+            dotObj.addEventListener('click', function() {
+                setPrintIdx(j);
+            }, false);
+        })(i);
+
         sliderDisplay(obj, (printIdx === i), dotObj);
     }
 
@@ -179,11 +216,6 @@ function hitSlider() {
     } else {
         printIdx++;
     }
-}
-
-function setPrintIdx(value) {
-    printIdx = value;
-    hitSlider();
 }
 
 function sliderDisplay(obj, showFlag, dotObj) {
