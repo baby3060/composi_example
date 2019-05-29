@@ -263,3 +263,22 @@ a.dot:hover {
 /* Dot fade */
 
 /* Banner */
+
+#newstitle > a {
+    border : 1 #ccc solid;
+}
+
+a.linked_new {
+    font-size : 10pt;
+    width : 80px;
+    display : inline-block; 
+    height : 100%;
+    margin : 0; padding : 0;
+    text-align: center;
+    line-height: 50px;
+    color : black;
+}
+
+a.linked_new:hover {
+    color :#0B09AB;
+}

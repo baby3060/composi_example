@@ -209,9 +209,14 @@ function pause() {
 }
 
 function setPrintIdx(value) {
-    timer.pause();
-    printIdx = value;
-    timer.resume();
+    if( timer.getState() == 1 ) {
+        timer.pause();
+        printIdx = value;
+        timer.resume();
+    } else {
+        printIdx = value;
+        hitSlider();
+    }
 }
 
 function hitSlider() {
