@@ -279,6 +279,34 @@ a.linked_new {
     color : black;
 }
 
+.news_menu {
+    height : 50px; width : 70%; float : left; text-align : right;
+}
+
 a.linked_new:hover {
-    color :#0B09AB;
+    color :aqua;
+}
+
+a.selected_view {
+    color :#3072BA;
+    border-bottom : 2px black solid ;
+}
+
+.visible {
+    display : block;
+}
+
+.border_bottom_white {
+    border-bottom : 2px solid gold; 
+}
+
+.news_print {
+    float : left; height : 50px; width : 30%;
+    font-size : 25pt;
+    font-weight: bold;
+}
+
+.emp {
+    color : #3072BA;
+    font-size : 28pt;
 }

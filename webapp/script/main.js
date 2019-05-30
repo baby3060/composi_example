@@ -262,3 +262,55 @@ function sliderDisplay(obj, showFlag, dotObj) {
 
     dotObj.className = dotClassName;
 }
+
+(function() {
+    var boardList =  document.getElementsByClassName("linked_new");
+    var obj;
+
+    for( var i = 0, len = boardList.length; i < len; i++ ) {
+        (
+            function(j) {
+                obj = boardList[i];
+
+                obj.addEventListener('click', function() {
+                    showNews(j);
+                }, false);
+            }
+        )(i);
+    }
+})();
+
+function showNews(idx) {
+    var boardList =  getElementsByClassName("linked_new");
+    var obj;
+    var data_views = "";
+
+    for( var i = 0, len = boardList.length; i < len; i++ ) {
+        obj = boardList[i];
+        if( idx == i ) {
+            obj.className = obj.className + " selected_view";
+            data_views = obj.dataset.view;
+        } else {            
+            obj.className = obj.className.replace(/selected_view/gi, '');
+        }
+    }
+
+    showNewsDiv(data_views);
+}
+
+function showNewsDiv(dataViews) {
+    
+    var tabboard = getElementsByClassName("tabboard");
+    var obj;
+    for( var i = 0, len = tabboard.length; i < len; i++ ) {
+        obj = tabboard[i];
+        if(obj.id === dataViews) {
+            obj.className = obj.className.replace(/hidden/gi, '');
+            obj.className = obj.className + " visible";
+        } else {
+            obj.className = obj.className.replace(/visible/gi, '');
+            obj.className = obj.className + " hidden";
+        }
+    }
+
+}

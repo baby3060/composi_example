@@ -130,19 +130,38 @@
                     <div id="news" style="margin-top : 20px; width : 100%; ">
                         <div style="width : 100%; ">
 
-                            <div style="float : left; height : 50px; width : 30%; border-bottom : 10px solid gold;">
-                                Korail News
+                            <div class="border_bottom_white news_print">
+                                <span class="emp">Korail</span> News
                             </div>
 
-                            <div style="height : 50px; width : 70%; float : left; border-bottom : 10px solid gold; text-align : right;">
-                                <a class="linked_new" href="#">전체보기</a>
-                                <a class="linked_new" href="#">코레일뉴스</a>
-                                <a class="linked_new" href="#">공지사항</a>
-                                <a class="linked_new" href="#">보도자료</a>
-                                <a class="linked_new" href="#">레일스토리</a>
+                            <div class="border_bottom_white news_menu">
+                                <a class="linked_new selected_view" data-view="allview" href="#">전체보기</a>
+                                <a class="linked_new" data-view="knewsview" href="#">코레일뉴스</a>
+                                <a class="linked_new" data-view="noticeview" href="#">공지사항</a>
+                                <a class="linked_new" data-view="reportingview" href="#">보도자료</a>
+                                <a class="linked_new" data-view="storyview" href="#">레일스토리</a>
                             </div>
 
-                            
+                            <div id="allview" class="tabboard visible">
+                                전체보기 화면
+                            </div>
+                                
+                            <div id="knewsview" class="tabboard hidden">
+                                코레일뉴스
+                            </div>
+    
+                            <div id="noticeview" class="tabboard hidden">
+                                공지사항
+                            </div>
+    
+                            <div id="reportingview" class="tabboard hidden">
+                                보도자료
+                            </div>
+    
+                            <div id="storyview" class="tabboard hidden">
+                                레일스토리
+                            </div>
+
                         </div>
                     </div>
                 </div>
