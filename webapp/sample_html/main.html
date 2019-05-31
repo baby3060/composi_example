@@ -11,7 +11,9 @@
 </head>
 <body >
     <div id="wrap">
-        <form action="">
+        <form name="idxform" action="">
+            <!-- news의 현재 활성화된 인덱스(Effect를 주기 위함) -->
+            <input type="hidden" name="news_idx" value="0" />
             <div id="topmenu">
                 <div id="logo" >
                     Logo 위치
@@ -126,41 +128,61 @@
                         
                         <img class="banner" data-url="img4" src="../style/images/img4.jpg" alt="웃긴4" />
                     </div>
-
+                    
                     <div id="news" style="margin-top : 20px; width : 100%; ">
                         <div style="width : 100%; ">
 
-                            <div class="border_bottom_white news_print">
-                                <span class="emp">Korail</span> News
+                            <div style="background-color : red;">
+                                <div class="border_bottom_white news_print">
+                                    <span class="emp">Korail</span> News
+                                </div>
+            
+                                <div class="border_bottom_white news_menu">
+                                    <a class="linked_new selected_view" data-view="allview" href="#">전체보기</a>
+                                    <a class="linked_new" data-view="knewsview" href="#">코레일뉴스</a>
+                                    <a class="linked_new" data-view="noticeview" href="#">공지사항</a>
+                                    <a class="linked_new" data-view="reportingview" href="#">보도자료</a>
+                                    <a class="linked_new" data-view="storyview" href="#">레일스토리</a>
+                                </div>
+                            </div>
+                            
+                            <div style="display : inline-block; margin-top : 15px; ">
+                                    <div id="allview" class="tabboard newsvisible" >
+                                        <div>메인1</div>
+                                        <div>메인2</div>
+                                        <div>메인3</div>
+                                        <div>메인4</div>
+                                        <div>메인5</div>
+                                        <div>메인6</div>
+                                        <div>메인7</div>
+                                        <div>메인8</div>
+                                    </div>
+                                        
+                                    <div id="knewsview" class="tabboard newshidden">
+                                        <div>코레일1</div>
+                                        <div>코레일2</div>
+                                        <div>코레일3</div>
+                                        <div>코레일4</div>
+                                        <div>코레일5</div>
+                                        <div>코레일6</div>
+                                        <div>코레일7</div>
+                                        <div>코레일8</div>
+                                    </div>
+            
+                                    <div id="noticeview" class="tabboard newshidden">
+                                        공지사항
+                                    </div>
+            
+                                    <div id="reportingview" class="tabboard newshidden">
+                                        보도자료
+                                    </div>
+            
+                                    <div id="storyview" class="tabboard newshidden">
+                                        레일스토리
+                                    </div>
                             </div>
 
-                            <div class="border_bottom_white news_menu">
-                                <a class="linked_new selected_view" data-view="allview" href="#">전체보기</a>
-                                <a class="linked_new" data-view="knewsview" href="#">코레일뉴스</a>
-                                <a class="linked_new" data-view="noticeview" href="#">공지사항</a>
-                                <a class="linked_new" data-view="reportingview" href="#">보도자료</a>
-                                <a class="linked_new" data-view="storyview" href="#">레일스토리</a>
-                            </div>
-
-                            <div id="allview" class="tabboard visible">
-                                전체보기 화면
-                            </div>
-                                
-                            <div id="knewsview" class="tabboard hidden">
-                                코레일뉴스
-                            </div>
-    
-                            <div id="noticeview" class="tabboard hidden">
-                                공지사항
-                            </div>
-    
-                            <div id="reportingview" class="tabboard hidden">
-                                보도자료
-                            </div>
-    
-                            <div id="storyview" class="tabboard hidden">
-                                레일스토리
-                            </div>
+                            
 
                         </div>
                     </div>

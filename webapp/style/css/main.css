@@ -292,8 +292,36 @@ a.selected_view {
     border-bottom : 2px black solid ;
 }
 
-.visible {
-    display : block;
+.newsvisible {
+    animation: newsfadein 1s;
+    -moz-animation: newsfadein 1s; /* Firefox */
+    -webkit-animation: newsfadein 1s; /* Safari and Chrome */
+    -o-animation: newsfadein 1s; /* Opera */
+}
+
+.newshidden {
+    display : none;
+}
+
+@keyframes newsfadein {
+    0% { display : block; opacity : 0.1; }
+    60% { opacity : 0.5;}
+    100% { opacity: 1; }
+}
+@-moz-keyframes newsfadein { 
+    0% { display : block; opacity : 0.1; }
+    60% { opacity : 0.5;}
+    100% { opacity: 1; }
+}
+@-webkit-keyframes newsfadein { 
+    0% { display : block; opacity : 0.1; }
+    60% { opacity : 0.5;}
+    100% { opacity: 1; }
+}
+@-o-keyframes newsfadein { 
+    0% { display : block; opacity : 0.1; }
+    60% { opacity : 0.5;}
+    100% { opacity: 1; }
 }
 
 .border_bottom_white {

@@ -25,6 +25,21 @@ function topClick(cmd) {
 }
 
 (function() {
+    window.addEventListener("resize", function() {
+        newsArrayCount();
+
+    }, false);
+})();
+
+function newsArrayCount() {
+    var width = window.innerWidth || document.body.scrollWidth;
+
+    var activeNewsChild = getElementsByClassName("newsvisible")[0].children;
+
+    
+}
+
+(function() {
     var inner_menu = getElementsByClassName("inner_menu");
 
     var innerLength = inner_menu.length;
@@ -305,12 +320,17 @@ function showNewsDiv(dataViews) {
     for( var i = 0, len = tabboard.length; i < len; i++ ) {
         obj = tabboard[i];
         if(obj.id === dataViews) {
-            obj.className = obj.className.replace(/hidden/gi, '');
-            obj.className = obj.className + " visible";
+            obj.className = obj.className.replace(/newshidden/gi, '');
+            obj.className = obj.className + " newsvisible";
         } else {
-            obj.className = obj.className.replace(/visible/gi, '');
-            obj.className = obj.className + " hidden";
+            obj.className = obj.className.replace(/newsvisible/gi, '');
+            obj.className = obj.className + " newshidden";
         }
     }
 
+    newsArrayCount();
 }
+
+(function() {
+    newsArrayCount();
+})();
