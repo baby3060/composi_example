@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="../style/css/main.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
+    
 </head>
 <body >
+    <script type="text/javascript" src="../script/loading.js"></script>
+    <script type="text/javascript">
+        (function() {
+            script_loadings("../script/common.js", "../script/main.js");
+        })();
+    </script>
     <div id="wrap">
         <form name="idxform" action="">
             <!-- news의 현재 활성화된 인덱스(Effect를 주기 위함) -->
@@ -518,20 +525,16 @@
                                 </div>
                             </div>
                         </div>
-
-                        <hr />
-
-                        <div>
-
-                        </div>
                     </div>
 
-
+                    <div id="footer">
+                        <footer style="margin-top : 20px;">
+                            상호 : fsafisaif
+                        </footer>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
-    <script src="../script/common.js"></script>
-    <script src="../script/main.js"></script>
 </body>
 </html>

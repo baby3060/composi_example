@@ -2,7 +2,7 @@
 (function() {
     var target = document.getElementById("sliderdot");
 
-    var imagesLength = document.getElementsByClassName("banner").length;
+    var imagesLength = getElementsByClassName("banner").length;
     
     target.style.display = "none";
 
@@ -224,19 +224,28 @@ function pause() {
 }
 
 function setPrintIdx(value) {
+    
     if( timer.getState() == 1 ) {
         timer.pause();
         printIdx = value;
         timer.resume();
     } else {
         printIdx = value;
-        hitSlider();
+        var sliderList = getElementsByClassName("banner");
+        var sliderDot = getElementsByClassName("dot");
+
+        for( var i = 0, listLength = sliderList.length; i < listLength; i++ ) {
+            obj = sliderList[i];
+            dotObj = sliderDot[i];
+    
+            sliderDisplay(obj, (printIdx === i), dotObj);
+        }
     }
 }
 
 function hitSlider() {
-    var sliderList = document.getElementsByClassName("banner");
-    var sliderDot = document.getElementsByClassName("dot");
+    var sliderList = getElementsByClassName("banner");
+    var sliderDot = getElementsByClassName("dot");
 
     var listLength = sliderList.length;
 
@@ -246,7 +255,6 @@ function hitSlider() {
     for( var i = 0; i < listLength; i++ ) {
         obj = sliderList[i];
         dotObj = sliderDot[i];
-
 
         (function(j) {
             dotObj.addEventListener('click', function() {
@@ -279,7 +287,7 @@ function sliderDisplay(obj, showFlag, dotObj) {
 }
 
 (function() {
-    var boardList =  document.getElementsByClassName("linked_new");
+    var boardList =  getElementsByClassName("linked_new");
     var obj;
 
     for( var i = 0, len = boardList.length; i < len; i++ ) {
