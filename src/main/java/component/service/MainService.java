@@ -1,12 +1,7 @@
 package component.service;
 
-import component.model.*;
-import component.repository.*;
-
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
-
-import component.repository.*;
 
 // Service는 하나만 만들어지는 것이 좋을 듯
 public class MainService {

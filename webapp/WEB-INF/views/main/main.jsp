@@ -1,6 +1,541 @@
-<div id="slides" style="margin-top : 20px; margin-left : 40px;">
-    <img class="mySlides" src="./style/images/img1.jpg" />
-    <img class="mySlides" src="./style/images/img2.jpg" />
-    <img class="mySlides" src="./style/images/img3.jpg" />
-    <img class="mySlides" src="./style/images/img4.jpg" />
-</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/css/main.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
+</head>
+<body >
+    
+    <script type="text/javascript" src="./script/loading.js"></script>
+    <script type="text/javascript">
+        (function() {
+            script_loadings("./script/common.js", "./script/main.js");
+        })();
+    </script>
+    
+    <div id="wrap">
+        <form name="idxform" action="">
+            <div id="topmenu">
+                <div id="logo" >
+                    Logo 위치
+                </div>
+                
+                <div id="searchdiv">
+                    <div style="margin-top : 15px;">
+                        <input type="text" id="search" placeholder="통합검색" />
+                        <span id="search_button" ><i class="fas fa-search" style="color : white"></i></span>
+
+                        <span style="margin-left : 10px; font-size : 10pt; font-weight: bold;">HOT 검색어 : </span>
+                        <span id="ranking" style="font-size : 10pt;">승차권예매, 경영공시</span>
+                    </div>
+                </div>
+                <div id="submenu">
+                    <span id="subinner">
+                        <a class="inner_menu" data-cmd="home">홈</a>/<a class="inner_menu" data-cmd="login">로그인</a>/<a class="inner_menu" data-cmd="join">통합회원가입</a>/<a class="inner_menu" data-cmd="allmenu">전체메뉴</a>
+                    </span>
+                </div>
+            </div>
+
+            <div id="container" style="height : 100%;">
+                <div id="leftbar">
+                    <nav>
+                        <span class="innerspan">정보공개</span>
+                        <div class="itemmenu hidden">
+                            <div class="item" data-url="/info" data-cmd="inform">정보공개 제도안내</div>
+                            <div class="item" data-url="/info" data-cmd="preinfo">사전정보공표</div>
+                            <div class="item" data-url="/info" data-cmd="list">정보목록</div>
+                            <div class="item" data-url="/info" data-cmd="public">정보공개 청구</div>
+                            <div class="item" data-url="/info" data-cmd="noblind">사업실명제</div>
+                            <div class="item" data-url="/info" data-cmd="present">소송현황</div>
+                            <div class="item" data-url="/info" data-cmd="data">공공데이터</div>
+                            <div class="item" data-url="/info" data-cmd="refroom">자료실</div>
+                        </div>
+                        
+                        <span class="innerspan">사업분야</span>
+                        <div class="itemmenu hidden">
+                            <div class="item" data-url="/buise">여객사업</div>
+                            <div class="item" data-url="/buise">광역철도사업</div>
+                            <div class="item" data-url="/buise">종합물류사업</div>
+                            <div class="item" data-url="/buise">자산개발사업</div>
+                            <div class="item" data-url="/buise">해외사업 º 국제협력</div>
+                            <div class="item" data-url="/buise">시설유지보수사업</div>
+                        </div>
+
+                        <span class="innerspan">열린경영</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">지속가능경영</div>
+                            <div class="item">철도안전</div>
+                            <div class="item">윤리경영</div>
+                            <div class="item">사회공헌</div>
+                            <div class="item">동반성장</div>
+                            <div class="item">환경경영</div>
+                            <div class="item">코레일 사규</div>
+                            <div class="item">사규 제º개정 안내</div>
+                        </div>
+                        
+                        <span class="innerspan">사이버통보실</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">보도자료</div>
+                            <div class="item">코레일 NEWS</div>
+                            <div class="item">코레일 SNS</div>
+                            <div class="item">간행물</div>
+                            <div class="item">공지사항</div>
+                        </div>
+                        
+                        <span class="innerspan">고객지원</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">고객의소리</div>
+                            <div class="item">부패추방센터</div>
+                            <div class="item">예산낭비신고센터</div>
+                            <div class="item">고객서비스현장</div>
+                            <div class="item">철도체험학습장</div>
+                            <div class="item">청렴게시판</div>
+                        </div>
+                        
+                        <span class="innerspan">코레일소개</span>
+                        <div class="itemmenu hidden">
+                            <div class="item">공사소개</div>
+                            <div class="item">CEO</div>
+                            <div class="item">조직 º 기능</div>
+                            <div class="item">계열사</div>
+                            <div class="item">CI</div>
+                            <div class="item">채용정보</div>
+                            <div class="item">경영공시(IR)</div>
+                            <div class="item">철도명예의전당</div>
+                            <div class="item">코레일 사규</div>
+                            <div class="item">스포츠단</div>
+                            <div class="item">오케스트라</div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div id="content">
+                    <div id="slider">
+                        <div style="position : absolute; padding-top : 15px;">
+                            <a href="#" onclick="play()" class="slidelink" alt="실행">
+                                <img src="./style/images/running.gif" style="margin-left : 10px; width : 20px; height : 20px;"/>
+                            </a>
+                            <a href="#" onclick="pause()" class="slidelink" alt="일시정지">
+                                <img src="./style/images/suspend.gif" style="margin-left : 10px; width : 20px; height : 20px; "/>
+                            </a>
+                            <span id="sliderdot"></span>
+                        </div>
+                        
+                        <img class="banner" data-url="img1" src="./style/images/img1.jpg" alt="웃긴1" />
+                        
+                        <img class="banner" data-url="img2" src="./style/images/img2.jpg" alt="웃긴2" />
+                        
+                        <img class="banner" data-url="img3" src="./style/images/img3.jpg" alt="웃긴3" />
+                        
+                        <img class="banner" data-url="img4" src="./style/images/img4.jpg" alt="웃긴4" />
+                    </div>
+                    
+                    <div id="news" style="margin-top : 20px; width : 100%; border-bottom : 1px #ccc solid;">
+                        <div style="width : 100%; ">
+
+                            <div>
+                                <div class="border_bottom_white news_print">
+                                    <span class="emp">Korail</span> News
+                                </div>
+            
+                                <div class="border_bottom_white news_menu">
+                                    <a class="linked_new selected_view" data-view="allview">전체보기</a>
+                                    <a class="linked_new" data-view="knewsview">코레일뉴스</a>
+                                    <a class="linked_new" data-view="noticeview">공지사항</a>
+                                    <a class="linked_new" data-view="reportingview">보도자료</a>
+                                    <a class="linked_new" data-view="storyview">레일스토리</a>
+                                </div>
+                            </div>
+                            
+                            <div style="display : inline-block; padding-top : 10px; padding-bottom : 10px;">
+                                <div id="allview" class="tabboard newsvisible" >
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인1</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인2</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인3</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인4</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인5</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인6</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인7</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div id="knewsview" class="tabboard newshidden">
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">코레일뉴스1</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">코레일뉴스2</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">코레일뉴스3</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">코레일뉴스4</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">코레일뉴스5</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">코레일뉴스6</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">코레일뉴스7</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">코레일뉴스8</div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div id="noticeview" class="tabboard newshidden">
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인1</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인2</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인3</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인4</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인5</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인6</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인7</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div id="reportingview" class="tabboard newshidden">
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인1</div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인2</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인3</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인4</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인5</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인6</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인7</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                        
+                                <div id="storyview" class="tabboard newshidden">
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인1</div>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인2</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인3</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인4</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img1.jpg" >
+                                            </a>
+                                            <div class="desc">메인5</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img2.jpg" >
+                                            </a>
+                                            <div class="desc">메인6</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img3.jpg">
+                                            </a>
+                                            <div class="desc">메인7</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="responsive">
+                                        <div class="gallery">
+                                            <a target="_blank" href="#">
+                                                <img src="./style/images/img4.jpg">
+                                            </a>
+                                            <div class="desc">메인8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="footer">
+                        <footer style="margin-top : 20px;">
+                            상호 : fsafisaif
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
