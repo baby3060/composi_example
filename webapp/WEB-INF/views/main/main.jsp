@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -38,7 +40,12 @@
                 </div>
                 <div id="submenu">
                     <span id="subinner">
-                        <a class="inner_menu" data-cmd="home">홈</a>/<a class="inner_menu" data-cmd="login">로그인</a>/<a class="inner_menu" data-cmd="join">통합회원가입</a>/<a class="inner_menu" data-cmd="allmenu">전체메뉴</a>
+                        <c:forEach var="temp" items="${topMenu}" varStatus="status">
+                            <a class="inner_menu" data-cmd="${temp.key}">${temp.value}</a>
+                            <c:if test="${!status.last}">
+                            /
+                            </c:if>
+                        </c:forEach>
                     </span>
                 </div>
             </div>

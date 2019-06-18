@@ -1,5 +1,7 @@
 package component.controller;
 
+import java.util.*;
+
 import java.io.IOException;
 import java.util.Optional;
 
@@ -47,20 +49,34 @@ public class MainController extends HttpServlet {
         HttpSession session = req.getSession();
 
         if( cmd == null ) { cmd = ""; }
+        
+        Optional<String> loginOpt = Optional.ofNullable((String)session.getAttribute("login_id"));
+
+        // Optional을 이용해서 세션 ID가 Null일 경우 공백으로
+        String loginId = loginOpt.orElse("guest");
+
+        Map<String, String> topMenu = new LinkedHashMap<String, String>();
+
+        topMenu.put("home", "홈");
+        
+        if( loginId.equals("guest") ) {
+            topMenu.put("login", "로그인");
+        } else {
+            topMenu.put("logout", "로그아웃");
+        }
+
+        topMenu.put("join", "통합회원가입");
+        topMenu.put("allmenu", "전체메뉴");
+
+        req.setAttribute("topMenu", topMenu);
+        req.setAttribute("loginId", loginId);
 
         // index.jsp에서 redirect 되었을 경우
         if( cmd.equals("") ) {
-            Optional<String> loginOpt = Optional.ofNullable((String)session.getAttribute("login_id"));
-
-            // Optional을 이용해서 세션 ID가 Null일 경우 공백으로
-            String loginId = loginOpt.orElse("guest");
-
-            req.setAttribute("loginId", loginId);
-
             url = "main";
         // 상단 조회 버튼 눌렀을 경우
         } else if(cmd.equals("search")) {
-
+            
         }
 
         RequestDispatcher dispatcher = this.getServletConfig().getServletContext().getRequestDispatcher(URL_PREFIX + url + urlSuffix);

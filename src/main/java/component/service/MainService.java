@@ -1,9 +1,9 @@
 package component.service;
 
-import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 // Service는 하나만 만들어지는 것이 좋을 듯
+// Servlet이 아닌 Service 클래스이니까 하나만
 public class MainService {
     private static MainService mainService;
 
@@ -20,9 +20,7 @@ public class MainService {
             } finally {
                 lock.unlock();
             }
-
         }
         return mainService;
     }
-
 }
