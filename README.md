@@ -38,3 +38,14 @@ webapp/style : Style 관련
         - 포함한 jsp(부모 jsp)가 컴파일되기 전에 부착된다.
         - 부모 jsp에서 include 지시자를 포함한 그 다음 줄 부터는 include 지시자에 정의한 변수에 접근할 수 있다.
         - 부모 jsp던지, 포함한 jsp던지 각 jsp에서 선언한 변수에 접근할 수 있다.
+
+2. GZIP 압축(톰캣용)로 설정
+<pre>
+    <code>
+        &lt;Connector redirectPort="8443" protocol="HTTP/1.1" 
+            compressableMimeType="text/html,text/xml,text/plain,text/javascript,text/css,application/javascript" 
+            compression="on" 
+            compressionMinSize="[사이즈 : 1024]" 
+        /&gt;
+    </code>
+ </pre>
